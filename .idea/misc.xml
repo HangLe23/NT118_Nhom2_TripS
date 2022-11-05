@@ -3,11 +3,21 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/NT118_PTUDDD/NT118_Nhom2_TripS/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1565" />
+        <entry key="..\:/NT118_PTUDDD/NT118_Nhom2_TripS/app/src/main/res/drawable/ic_arrow_back.xml" value="0.1565" />
         <entry key="..\:/NT118_PTUDDD/NT118_Nhom2_TripS/app/src/main/res/drawable/ic_arrow_forward.xml" value="0.1565" />
         <entry key="..\:/NT118_PTUDDD/NT118_Nhom2_TripS/app/src/main/res/drawable/ic_arrow_forward_ios.xml" value="0.1565" />
+        <entry key="..\:/NT118_PTUDDD/NT118_Nhom2_TripS/app/src/main/res/drawable/ic_arrow_right_circle_icon.xml" value="0.1565" />
+        <entry key="..\:/NT118_PTUDDD/NT118_Nhom2_TripS/app/src/main/res/drawable/ic_baseline_remove_red_eye_24.xml" value="0.1565" />
         <entry key="..\:/NT118_PTUDDD/NT118_Nhom2_TripS/app/src/main/res/drawable/shape.xml" value="0.1565" />
         <entry key="..\:/NT118_PTUDDD/NT118_Nhom2_TripS/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/NT118_PTUDDD/NT118_Nhom2_TripS/app/src/main/res/layout/forgot_pass.xml" value="0.22826086956521738" />
+        <entry key="..\:/NT118_PTUDDD/NT118_Nhom2_TripS/app/src/main/res/layout/home.xml" value="0.20512820512820512" />
+        <entry key="..\:/NT118_PTUDDD/NT118_Nhom2_TripS/app/src/main/res/layout/reset_pass.xml" value="0.24895833333333334" />
         <entry key="..\:/NT118_PTUDDD/NT118_Nhom2_TripS/app/src/main/res/layout/sign_in.xml" value="0.25" />
+        <entry key="..\:/NT118_PTUDDD/NT118_Nhom2_TripS/app/src/main/res/layout/sign_up.xml" value="0.24895833333333334" />
+        <entry key="..\:/NT118_PTUDDD/NT118_Nhom2_TripS/app/src/main/res/layout/verify.xml" value="0.1" />
+        <entry key="..\:/NT118_PTUDDD/NT118_Nhom2_TripS/app/src/main/res/layout/verify_email.xml" value="0.24895833333333334" />
       </map>
     </option>
   </component>

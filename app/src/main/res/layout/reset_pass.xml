@@ -21,9 +21,9 @@
             android:id="@+id/tv_Title"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:text="Welcome Back!"
+            android:text="Reset your password?"
             android:gravity="center"
-            android:textSize="35dp"
+            android:textSize="30dp"
             android:textColor="#335058"
             android:textStyle="bold"/>
 
@@ -31,11 +31,11 @@
             android:id="@+id/tv_Describe"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Tạo một chuyến đi mới ngay bây giờ"
-            android:gravity="center"
+            android:text="Vui lòng nhập mật khẩu mới và xác nhận"
             android:textSize="20sp"
             android:textStyle="italic"
-            android:textColor="@color/black"/>
+            android:textColor="@color/black"
+            android:gravity="center"/>
         <TextView
             android:layout_width="100dp"
             android:layout_height="match_parent"
@@ -49,31 +49,17 @@
         android:layout_weight="2"
         android:background="#335058"
         android:orientation="vertical">
-
-        <EditText
-            android:id="@+id/et_Mail"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.5"
-            android:layout_marginLeft="40dp"
-            android:layout_marginRight="40dp"
-            android:hint="Email"
-            android:textColor="@color/white"
-            android:textColorHint="@color/white"
-            android:textSize="20sp"
-            android:layout_marginTop="75dp"/>
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="0.5"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="100dp"
             android:orientation="horizontal">
 
             <EditText
                 android:id="@+id/et_Password"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_weight="2"
                 android:layout_marginLeft="40dp"
                 android:hint="Mật khẩu"
@@ -90,27 +76,39 @@
                 android:layout_marginTop="5dp"
                 android:background="@drawable/ic_baseline_remove_red_eye_24"/>
         </LinearLayout>
-
-        <TextView
-            android:id="@+id/tv_ForgetPass"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:layout_weight="0.5"
-            android:text="Quên mật khẩu?"
-            android:gravity="right"
-            android:textSize="20sp"
-            android:layout_marginRight="30dp"
-            android:textColor="@color/white"
-            android:layout_marginTop="20dp"
-            android:textStyle="italic"/>
+            android:layout_marginBottom="75dp"
+            android:orientation="horizontal">
 
+            <EditText
+                android:id="@+id/et_Confirm_pass"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:layout_marginLeft="40dp"
+                android:hint="Xác nhận mật khẩu"
+                android:textSize="20sp"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"/>
+
+            <Button
+                android:id="@+id/btn_show_confirm"
+                android:layout_width="50dp"
+                android:layout_height="25dp"
+                android:layout_weight="1"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/ic_baseline_remove_red_eye_24"/>
+        </LinearLayout>
         <Button
-            android:id="@+id/btn_Enter"
+            android:id="@+id/button"
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:layout_marginLeft="300dp"
             android:layout_marginBottom="100dp"
             android:background="@drawable/ic_arrow_right_circle_icon"/>
-
     </LinearLayout>
 </LinearLayout>
