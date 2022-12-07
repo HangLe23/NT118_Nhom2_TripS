@@ -69,10 +69,10 @@
 
             <Button
                 android:id="@+id/btn_show_pass"
-                android:layout_width="50dp"
+                android:layout_width="70dp"
                 android:layout_height="25dp"
                 android:layout_weight="1"
-                android:layout_marginRight="20dp"
+                android:layout_marginRight="45dp"
                 android:layout_marginTop="5dp"
                 android:background="@drawable/ic_baseline_remove_red_eye_24"/>
         </LinearLayout>
@@ -96,10 +96,10 @@
 
             <Button
                 android:id="@+id/btn_show_confirm"
-                android:layout_width="50dp"
+                android:layout_width="70dp"
                 android:layout_height="25dp"
                 android:layout_weight="1"
-                android:layout_marginRight="20dp"
+                android:layout_marginRight="45dp"
                 android:layout_marginTop="5dp"
                 android:background="@drawable/ic_baseline_remove_red_eye_24"/>
         </LinearLayout>
