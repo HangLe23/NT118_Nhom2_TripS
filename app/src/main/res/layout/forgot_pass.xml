@@ -36,11 +36,12 @@
             android:textStyle="italic"
             android:textColor="@color/black"
             android:gravity="center"/>
+
         <TextView
-            android:layout_width="100dp"
-            android:layout_height="match_parent"
-            android:background="@drawable/ic_baseline_train"
-            android:layout_marginLeft="150dp"/>
+            android:layout_width="90dp"
+            android:layout_height="98dp"
+            android:layout_marginLeft="150dp"
+            android:background="@drawable/ic_baseline_train" />
 
     </LinearLayout>
     <LinearLayout
