@@ -8,40 +8,46 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:background="#DEC854"
+        android:background="#335058"
         android:orientation="vertical">
-        <Button
-            android:layout_width="60dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/btn_back"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="5dp"
-            android:background="@drawable/ic_arrow_back"/>
-        <TextView
-            android:id="@+id/textView2"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:text="Create new account"
-            android:gravity="center"
-            android:textSize="35dp"
-            android:textColor="#335058"
-            android:textStyle="bold"/>
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@drawable/border"
+            android:orientation="vertical">
+            <Button
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/btn_back"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="5dp"
+                android:background="@drawable/ic_arrow_back"/>
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:text="Create new account"
+                android:gravity="center"
+                android:textSize="35dp"
+                android:textColor="#335058"
+                android:textStyle="bold"/>
 
-        <TextView
-            android:id="@+id/textView5"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Bắt đầu với một cái tên nào!"
-            android:gravity="center"
-            android:textSize="20sp"
-            android:textStyle="italic"
-            android:textColor="@color/black"/>
-        <TextView
-            android:layout_width="100dp"
-            android:layout_height="match_parent"
-            android:background="@drawable/ic_baseline_train"
-            android:layout_marginLeft="150dp"/>
-
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Bắt đầu với một cái tên nào!"
+                android:gravity="center"
+                android:textSize="20sp"
+                android:textStyle="italic"
+                android:textColor="@color/black"/>
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/ic_baseline_train"
+                android:layout_marginLeft="150dp"/>
+        </LinearLayout>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"

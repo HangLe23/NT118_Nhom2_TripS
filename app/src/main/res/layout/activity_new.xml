@@ -66,6 +66,7 @@
         android:layout_height="300dp"
         android:scaleType="centerCrop"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/cauvang" />
+        android:background="@drawable/cauvang" />
+        <!--app:srcCompat="@drawable/cauvang" -->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
