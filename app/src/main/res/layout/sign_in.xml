@@ -43,8 +43,8 @@
                 android:textStyle="italic"
                 android:textColor="@color/black"/>
             <TextView
-                android:layout_width="59dp"
-                android:layout_height="73dp"
+                android:layout_width="90dp"
+                android:layout_height="100dp"
                 android:layout_marginLeft="150dp"
                 android:background="@drawable/ic_baseline_train" />
         </LinearLayout>

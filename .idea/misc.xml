@@ -4,19 +4,30 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/NT118_PTUDDD/NT118_Nhom2_TripS/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1565" />
+        <entry key="..\:/NT118_PTUDDD/NT118_Nhom2_TripS/app/src/main/res/drawable/blue_border.xml" value="0.1" />
+        <entry key="..\:/NT118_PTUDDD/NT118_Nhom2_TripS/app/src/main/res/drawable/border.xml" value="0.165" />
+        <entry key="..\:/NT118_PTUDDD/NT118_Nhom2_TripS/app/src/main/res/drawable/border_hotel.xml" value="0.1" />
+        <entry key="..\:/NT118_PTUDDD/NT118_Nhom2_TripS/app/src/main/res/drawable/border_tour.xml" value="0.1" />
+        <entry key="..\:/NT118_PTUDDD/NT118_Nhom2_TripS/app/src/main/res/drawable/border_trip.xml" value="0.1" />
         <entry key="..\:/NT118_PTUDDD/NT118_Nhom2_TripS/app/src/main/res/drawable/ic_arrow_back.xml" value="0.1565" />
         <entry key="..\:/NT118_PTUDDD/NT118_Nhom2_TripS/app/src/main/res/drawable/ic_arrow_forward.xml" value="0.1565" />
         <entry key="..\:/NT118_PTUDDD/NT118_Nhom2_TripS/app/src/main/res/drawable/ic_arrow_forward_ios.xml" value="0.1565" />
         <entry key="..\:/NT118_PTUDDD/NT118_Nhom2_TripS/app/src/main/res/drawable/ic_arrow_right_circle_icon.xml" value="0.1565" />
+        <entry key="..\:/NT118_PTUDDD/NT118_Nhom2_TripS/app/src/main/res/drawable/ic_baseline_arrow_drop_down_24.xml" value="0.192" />
+        <entry key="..\:/NT118_PTUDDD/NT118_Nhom2_TripS/app/src/main/res/drawable/ic_baseline_calendar_month_24.xml" value="0.121" />
         <entry key="..\:/NT118_PTUDDD/NT118_Nhom2_TripS/app/src/main/res/drawable/ic_baseline_remove_red_eye_24.xml" value="0.1565" />
+        <entry key="..\:/NT118_PTUDDD/NT118_Nhom2_TripS/app/src/main/res/drawable/ic_baseline_tour_24.xml" value="0.2115" />
         <entry key="..\:/NT118_PTUDDD/NT118_Nhom2_TripS/app/src/main/res/drawable/ic_baseline_train.xml" value="0.165" />
         <entry key="..\:/NT118_PTUDDD/NT118_Nhom2_TripS/app/src/main/res/drawable/ic_directions_transit.xml" value="0.165" />
         <entry key="..\:/NT118_PTUDDD/NT118_Nhom2_TripS/app/src/main/res/drawable/ic_hotel.xml" value="0.165" />
         <entry key="..\:/NT118_PTUDDD/NT118_Nhom2_TripS/app/src/main/res/drawable/ic_launcher_background.xml" value="0.165" />
+        <entry key="..\:/NT118_PTUDDD/NT118_Nhom2_TripS/app/src/main/res/drawable/ic_tour.xml" value="0.1" />
+        <entry key="..\:/NT118_PTUDDD/NT118_Nhom2_TripS/app/src/main/res/drawable/ic_yourtrip.xml" value="0.1" />
         <entry key="..\:/NT118_PTUDDD/NT118_Nhom2_TripS/app/src/main/res/drawable/shape.xml" value="0.1565" />
-        <entry key="..\:/NT118_PTUDDD/NT118_Nhom2_TripS/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/NT118_PTUDDD/NT118_Nhom2_TripS/app/src/main/res/layout/activity_main.xml" value="0.264" />
         <entry key="..\:/NT118_PTUDDD/NT118_Nhom2_TripS/app/src/main/res/layout/activity_new.xml" value="0.22826086956521738" />
         <entry key="..\:/NT118_PTUDDD/NT118_Nhom2_TripS/app/src/main/res/layout/activity_plt.xml" value="0.20427350427350427" />
+        <entry key="..\:/NT118_PTUDDD/NT118_Nhom2_TripS/app/src/main/res/layout/create_newtrip.xml" value="0.264" />
         <entry key="..\:/NT118_PTUDDD/NT118_Nhom2_TripS/app/src/main/res/layout/forgot_pass.xml" value="0.22826086956521738" />
         <entry key="..\:/NT118_PTUDDD/NT118_Nhom2_TripS/app/src/main/res/layout/home.xml" value="0.20512820512820512" />
         <entry key="..\:/NT118_PTUDDD/NT118_Nhom2_TripS/app/src/main/res/layout/reset_pass.xml" value="0.24895833333333334" />

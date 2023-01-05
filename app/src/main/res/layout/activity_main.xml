@@ -8,10 +8,91 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:background="#335058"
+        android:background="@drawable/blue_border"
         app:layout_constraintTop_toTopOf="parent">
-
-
     </LinearLayout>
+
+    <ImageButton
+        android:id="@+id/ibtn_hotel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/border_hotel"
+        app:srcCompat="@drawable/ic_hotel"
+        android:layout_marginTop="225dp"
+        android:layout_marginLeft="20dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"/>
+    <ImageButton
+        android:id="@+id/ibtn_tour"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/border_tour"
+        app:srcCompat="@drawable/ic_tour"
+        android:layout_marginTop="225dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/ibtn_hotel"
+        app:layout_constraintRight_toLeftOf="@+id/ibtn_yourTrip"/>
+    <ImageButton
+        android:id="@+id/ibtn_yourTrip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/border_trip"
+        app:srcCompat="@drawable/ic_yourtrip"
+        android:layout_marginTop="225dp"
+        android:layout_marginRight="20dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hotel"
+        app:layout_constraintTop_toBottomOf="@id/ibtn_hotel"
+        android:layout_marginLeft="35dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"/>
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tour"
+        app:layout_constraintTop_toBottomOf="@id/ibtn_tour"
+        app:layout_constraintLeft_toRightOf="@id/textView"
+        app:layout_constraintRight_toLeftOf="@+id/textView4"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:layout_marginLeft="20dp"/>
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Your Trips"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toBottomOf="@+id/ibtn_yourTrip"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginRight="15dp"/>
+
+    <Button
+        android:id="@+id/btn_CreateTrip"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="+ Create new trip"
+        android:background="#DEC854"
+        app:layout_constraintTop_toBottomOf="@id/textView"
+        android:layout_marginTop="20dp"
+        android:textColor="#335058"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"/>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
