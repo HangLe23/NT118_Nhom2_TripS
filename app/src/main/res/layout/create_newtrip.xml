@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#335058"
-    tools:context=".MainActivity">
+    android:background="#335058">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="225dp"
@@ -129,7 +128,7 @@
         android:layout_marginRight="30dp"/>
 
     <ImageButton
-        android:id="@+id/imageButton3"
+        android:id="@+id/ibtn_next"
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:background="@drawable/ic_arrow_right_circle_icon"

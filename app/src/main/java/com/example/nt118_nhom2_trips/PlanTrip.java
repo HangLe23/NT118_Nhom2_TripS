@@ -8,31 +8,31 @@ import android.widget.ImageButton;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class CreateNewTrip extends AppCompatActivity {
+public class PlanTrip extends AppCompatActivity {
     private Button back;
-    private ImageButton next;
+    private ImageButton add;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.create_newtrip);
+        setContentView(R.layout.plan_trip);
         findViewByIds();
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent iNewActivity = new Intent(CreateNewTrip.this, MainActivity.class);
+                Intent iNewActivity = new Intent(PlanTrip.this, CreateNewTrip.class);
                 startActivity(iNewActivity);
             }
         });
-        next.setOnClickListener(new View.OnClickListener() {
+        add.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                Intent iNewActivity = new Intent(CreateNewTrip.this, PlanTrip.class);
+            public void onClick(View v) {
+                Intent iNewActivity = new Intent(PlanTrip.this, AddActivity.class);
                 startActivity(iNewActivity);
             }
         });
     }
     private void findViewByIds(){
         back = (Button) findViewById(R.id.btn_back);
-        next = (ImageButton) findViewById(R.id.ibtn_next);
+        add = (ImageButton) findViewById(R.id.ibtn_add);
     }
 }

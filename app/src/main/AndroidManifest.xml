@@ -24,6 +24,10 @@
         </activity>
         <activity android:name=".CreateNewTrip"
             android:exported="true"/>
+        <activity android:name=".PlanTrip"/>
+        <activity android:name=".AddActivity"/>
+        <activity android:name=".Tour"/>
+        <activity android:name=".Hotel"/>
     </application>
 
 </manifest>

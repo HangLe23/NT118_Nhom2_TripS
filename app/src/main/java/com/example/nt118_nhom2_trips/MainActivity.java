@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        create = (Button) findViewById(R.id.btn_CreateTrip);
+        findViewByIds();
         create.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -25,7 +25,26 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(iNewActivity);
             }
         });
+        hotel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent iNewActivity = new Intent(MainActivity.this, Hotel.class);
+                startActivity(iNewActivity);
+            }
+        });
+        tour.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent iNewActivity = new Intent(MainActivity.this, Tour.class);
+                startActivity(iNewActivity);
+            }
+        });
     }
-
+    private void findViewByIds(){
+        create = (Button) findViewById(R.id.btn_CreateTrip);
+        hotel = (ImageButton) findViewById(R.id.ibtn_hotel);
+        tour = (ImageButton) findViewById(R.id.ibtn_tour);
+        yourTrip = (ImageButton) findViewById(R.id.ibtn_yourTrip);
+    }
 
 }
