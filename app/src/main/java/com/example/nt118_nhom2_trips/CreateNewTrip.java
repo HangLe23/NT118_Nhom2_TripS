@@ -13,6 +13,13 @@ public class CreateNewTrip extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.create_newtrip);
-
+        Button back = (Button) findViewById(R.id.btn_back);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent iNewActivity = new Intent(CreateNewTrip.this, MainActivity.class);
+                startActivity(iNewActivity);
+            }
+        });
     }
 }
