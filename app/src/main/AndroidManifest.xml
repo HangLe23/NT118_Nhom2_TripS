@@ -16,11 +16,11 @@
         <activity
             android:name=".MainActivity"
             android:exported="true">
-            <intent-filter>
+            <!--<intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            </intent-filter>-->
         </activity>
         <activity android:name=".CreateNewTrip"
             android:exported="true"/>
@@ -28,6 +28,16 @@
         <activity android:name=".AddActivity"/>
         <activity android:name=".Tour"/>
         <activity android:name=".Hotel"/>
+        <activity android:name=".NewActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".SignIn"/>
+        <activity android:name=".SignUp"/>
     </application>
 
 </manifest>
