@@ -57,8 +57,6 @@ public class SignUp extends AppCompatActivity {
         btn_show_pass = (CheckBox) findViewById(R.id.btn_show_pass);
         btn_show_confirm = (CheckBox) findViewById(R.id.btn_show_confirm);
 
-
-
         mAuth = FirebaseAuth.getInstance();
         progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Signing up... ");
