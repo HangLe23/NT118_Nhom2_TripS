@@ -32,7 +32,7 @@ import com.google.firebase.auth.FirebaseUser;
 public class SignIn extends AppCompatActivity {
     EditText et_Mail, et_Password;
     TextView tv_ForgetPass;
-    Button btn_Enter;
+    Button btn_Enter,btn_back;
     private FirebaseAuth mAuth;
     CheckBox btn_show_pass;
     ProgressDialog pd;
@@ -50,6 +50,13 @@ public class SignIn extends AppCompatActivity {
 
         tv_ForgetPass = (TextView) findViewById(R.id.tv_ForgetPass);
 
+        btn_back =(Button) findViewById(R.id.btn_back);
+        btn_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(SignIn.this, MainActivity.class));
+            }
+        });
         btn_show_pass = (CheckBox) findViewById(R.id.btn_show_pass);
 
         mAuth = FirebaseAuth.getInstance();

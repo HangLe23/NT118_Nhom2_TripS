@@ -63,6 +63,12 @@ public class SignUp extends AppCompatActivity {
         progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Signing up... ");
 
+        btn_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(SignUp.this, MainActivity.class));
+            }
+        });
         btn_show_pass.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
