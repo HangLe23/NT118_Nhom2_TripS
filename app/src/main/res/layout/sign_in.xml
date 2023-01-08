@@ -86,17 +86,19 @@
                 android:hint="Mật khẩu"
                 android:textSize="20sp"
                 android:textColor="@color/white"
-                android:textColorHint="@color/white"/>
-
-            <Button
+                android:textColorHint="@color/white">
+                <requestFocus/>
+            </EditText>
+            <CheckBox
                 android:id="@+id/btn_show_pass"
-                android:layout_width="70dp"
-                android:layout_height="25dp"
-                android:layout_weight="1"
-                android:layout_marginRight="45dp"
+                android:layout_width="27dp"
+                android:layout_height="17dp"
                 android:layout_marginTop="5dp"
-                android:background="@drawable/ic_baseline_remove_red_eye_24"/>
-        </LinearLayout>
+                android:layout_marginRight="45dp"
+                android:layout_weight="1"
+                android:background="@drawable/ic_baseline_remove_red_eye_24"
+                />
+             </LinearLayout>
 
         <TextView
             android:id="@+id/tv_ForgetPass"

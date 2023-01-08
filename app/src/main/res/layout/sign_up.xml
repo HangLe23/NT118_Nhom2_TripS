@@ -114,10 +114,10 @@
                 android:layout_marginLeft="40dp"
                 android:hint="Mật khẩu"
                 android:textSize="20sp"
-                android:textColor="@color/white"
-                android:textColorHint="@color/white"/>
-
-            <Button
+                android:textColor="@color/white">
+                <requestFocus/>
+            </EditText>
+            <CheckBox
                 android:id="@+id/btn_show_pass"
                 android:layout_width="70dp"
                 android:layout_height="25dp"
@@ -125,6 +125,7 @@
                 android:layout_marginRight="45dp"
                 android:layout_marginTop="5dp"
                 android:background="@drawable/ic_baseline_remove_red_eye_24"/>
+
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -141,10 +142,10 @@
                 android:layout_marginLeft="40dp"
                 android:hint="Xác nhận mật khẩu"
                 android:textSize="20sp"
-                android:textColor="@color/white"
-                android:textColorHint="@color/white"/>
-
-            <Button
+                android:textColor="@color/white">
+                <requestFocus/>
+            </EditText>
+            <CheckBox
                 android:id="@+id/btn_show_confirm"
                 android:layout_width="70dp"
                 android:layout_height="25dp"
@@ -152,6 +153,7 @@
                 android:layout_marginRight="45dp"
                 android:layout_marginTop="5dp"
                 android:background="@drawable/ic_baseline_remove_red_eye_24"/>
+
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -183,7 +185,7 @@
         </LinearLayout>
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/btn_Signup"
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:layout_marginLeft="300dp"

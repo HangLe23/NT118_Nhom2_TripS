@@ -110,7 +110,7 @@
                 android:background="@drawable/ic_baseline_remove_red_eye_24"/>
         </LinearLayout>
         <Button
-            android:id="@+id/button"
+            android:id="@+id/btn_Signup"
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:layout_marginLeft="300dp"
