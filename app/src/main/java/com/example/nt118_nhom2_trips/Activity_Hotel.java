@@ -15,7 +15,7 @@ import java.util.List;
 import PlaceName.PlaceName;
 import PlaceName.PlaceNameAdapater;
 
-public class Hotel extends AppCompatActivity {
+public class Activity_Hotel extends AppCompatActivity {
     private RecyclerView rcvCategory, rcvCategoryHotel;
     private PlaceNameAdapater placeNameAdapater;
     private Button backhome;
@@ -28,7 +28,7 @@ public class Hotel extends AppCompatActivity {
         backhome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent iNewActivity = new Intent(Hotel.this, MainActivity.class);
+                Intent iNewActivity = new Intent(Activity_Hotel.this, MainActivity.class);
                 startActivity(iNewActivity);
             }
         });

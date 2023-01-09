@@ -27,7 +27,6 @@
         <activity android:name=".PlanTrip"/>
         <activity android:name=".AddActivity"/>
         <activity android:name=".Tour"/>
-        <activity android:name=".Hotel"/>
         <activity android:name=".NewActivity"
             android:exported="true">
             <intent-filter>
