@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
         hotel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent iNewActivity = new Intent(MainActivity.this, Activity_Hotel.class);
+                Intent iNewActivity = new Intent(MainActivity.this, SearchHotel.class);
                 startActivity(iNewActivity);
             }
         });

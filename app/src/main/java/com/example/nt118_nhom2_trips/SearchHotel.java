@@ -1,6 +1,7 @@
 package com.example.nt118_nhom2_trips;
 
 import android.os.Bundle;
+import android.view.Menu;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
@@ -40,5 +41,11 @@ public class SearchHotel extends AppCompatActivity {
 
     private void findViewByIds(){
         rcvHotel = findViewById(R.id.rcv_catoryhotel);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_hotel, menu);
+        return true;
     }
 }
