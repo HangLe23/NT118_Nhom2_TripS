@@ -38,14 +38,14 @@ public class MainActivity extends AppCompatActivity {
         hotel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent iNewActivity = new Intent(MainActivity.this, SearchHotel.class);
+                Intent iNewActivity = new Intent(MainActivity.this, Activity_Hotel.class);
                 startActivity(iNewActivity);
             }
         });
         tour.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent iNewActivity = new Intent(MainActivity.this, Tour.class);
+                Intent iNewActivity = new Intent(MainActivity.this, Activity_Tour.class);
                 startActivity(iNewActivity);
             }
         });

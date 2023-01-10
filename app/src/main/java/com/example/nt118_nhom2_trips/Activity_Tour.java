@@ -15,7 +15,7 @@ import java.util.List;
 import PlaceName.PlaceName;
 import PlaceName.PlaceNameAdapater;
 
-public class Tour extends AppCompatActivity {
+public class Activity_Tour extends AppCompatActivity {
     private RecyclerView rcvCategory;
     private PlaceNameAdapater placeNameAdapater;
     private Button backhome;
@@ -28,7 +28,7 @@ public class Tour extends AppCompatActivity {
         backhome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent iNewActivity = new Intent(Tour.this, MainActivity.class);
+                Intent iNewActivity = new Intent(Activity_Tour.this, MainActivity.class);
                 startActivity(iNewActivity);
             }
         });
