@@ -18,14 +18,15 @@ public class NewActivity extends AppCompatActivity {
         btn_sign_up.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(NewActivity.this, SignUp.class));
-
+                Intent intent = new Intent(NewActivity.this, SignUp.class);
+                startActivity(intent);
             }
         });
         btn_Sign_in.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(NewActivity.this, SignIn.class));
+                Intent intent = new Intent(NewActivity.this, SignIn.class);
+                startActivity(intent);
 
             }
         });
