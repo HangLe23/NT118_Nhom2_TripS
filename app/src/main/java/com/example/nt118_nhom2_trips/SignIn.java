@@ -69,7 +69,7 @@ public class SignIn extends AppCompatActivity {
     private void onClickForgetPass() {
         progressDialog.show();
         FirebaseAuth auth = FirebaseAuth.getInstance();
-        String emailAddress = "ngan18082k2@gmail.com";
+        String emailAddress= Email.getText().toString();
 
         auth.sendPasswordResetEmail(emailAddress)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
