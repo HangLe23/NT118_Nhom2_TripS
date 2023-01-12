@@ -3,8 +3,12 @@ package com.example.nt118_nhom2_trips;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -17,9 +21,11 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class SignUp extends AppCompatActivity {
-    private EditText Email, Pass;
-    private Button SignUp;
+    private EditText Email, Pass, et_Confirm_pass;
+    private Button SignUp, back;
     private ProgressDialog progressDialog;
+
+    private CheckBox btn_show_pass, btn_show_confirm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,12 +33,15 @@ public class SignUp extends AppCompatActivity {
         setContentView(R.layout.sign_up);
         findViewByIds();
         initListener();
+
     }
 
     private void findViewByIds(){
         SignUp = (Button) findViewById(R.id.button);
         Email = (EditText) findViewById(R.id.et_Email);
         Pass = (EditText) findViewById(R.id.et_Password);
+
+
         progressDialog = new ProgressDialog(this);
     }
 
@@ -43,6 +52,8 @@ public class SignUp extends AppCompatActivity {
                 onClickSignUp();
             }
         });
+
+
     }
 
     private void onClickSignUp() {
