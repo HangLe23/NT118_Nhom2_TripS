@@ -1,15 +1,19 @@
 package com.example.nt118_nhom2_trips;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.ui.AppBarConfiguration;
+import androidx.navigation.ui.NavigationUI;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.ImageButton;
-import android.widget.ViewAnimator;
+
+
+import com.example.nt118_nhom2_trips.databinding.ActivityMainBinding;
+import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,36 +23,41 @@ import PlaceName.PlaceNameAdapater;
 
 public class MainActivity extends AppCompatActivity {
 
+    private AppBarConfiguration mAppBarConfiguration;
+    private ActivityMainBinding binding;
     private RecyclerView rcvCategory;
     private PlaceNameAdapater placeNameAdapater;
-    private Button create;
-    private ImageButton hotel, tour, yourTrip;
+    //private Button create;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        findViewByIds();
-        create.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent iNewActivity = new Intent(MainActivity.this, CreateNewTrip.class);
-                startActivity(iNewActivity);
-            }
-        });
-        hotel.setOnClickListener(new View.OnClickListener() {
+        //setContentView(R.layout.activity_main);
+
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+
+        setSupportActionBar(binding.appBarMain.toolbar);
+        /*binding.appBarMain.fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent iNewActivity = new Intent(MainActivity.this, Activity_Hotel.class);
-                startActivity(iNewActivity);
+                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
             }
-        });
-        tour.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent iNewActivity = new Intent(MainActivity.this, Activity_Tour.class);
-                startActivity(iNewActivity);
-            }
-        });
+        });*/
+        DrawerLayout drawer = binding.drawerLayout;
+        NavigationView navigationView = binding.navView;
+        // Passing each menu ID as a set of Ids because each
+        // menu should be considered as top level destinations.
+        mAppBarConfiguration = new AppBarConfiguration.Builder(
+                R.id.nav_home)
+                .setOpenableLayout(drawer)
+                .build();
+        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
+        NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
+        NavigationUI.setupWithNavController(navigationView, navController);
+
+        rcvCategory = findViewById(R.id.rcv_category);
 
         List<PlaceName> list = new ArrayList<>();
         list.add(new PlaceName(R.drawable.catba_haiphong, "Cát Bà, Hải Phòng"));
@@ -68,12 +77,18 @@ public class MainActivity extends AppCompatActivity {
 
         rcvCategory.setAdapter(placeNameAdapater);
     }
-    private void findViewByIds(){
-        create = (Button) findViewById(R.id.btn_CreateTrip);
-        hotel = (ImageButton) findViewById(R.id.ibtn_hotel);
-        tour = (ImageButton) findViewById(R.id.ibtn_tour);
-        yourTrip = (ImageButton) findViewById(R.id.ibtn_yourTrip);
-        rcvCategory = findViewById(R.id.rcv_category);
-    }
 
+    /*@Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }*/
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
+        return NavigationUI.navigateUp(navController, mAppBarConfiguration)
+                || super.onSupportNavigateUp();
+    }
 }
