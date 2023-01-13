@@ -57,16 +57,16 @@ public class SignIn extends AppCompatActivity {
                 onclickSignIn();
             }
         });
-        tv_ForgetPass.setOnClickListener(new View.OnClickListener() {
+        /*tv_ForgetPass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onClickForgetPass();
             }
-        });
+        });*/
 
     }
 
-    private void onClickForgetPass() {
+    /*private void onClickForgetPass() {
         progressDialog.show();
         FirebaseAuth auth = FirebaseAuth.getInstance();
         String emailAddress= Email.getText().toString();
@@ -83,7 +83,7 @@ public class SignIn extends AppCompatActivity {
                         }
                     }
                 });
-    }
+    }*/
 
     private void onclickSignIn() {
         String email = Email.getText().toString().trim();

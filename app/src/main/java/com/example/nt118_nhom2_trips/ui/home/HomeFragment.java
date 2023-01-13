@@ -10,21 +10,27 @@ import android.widget.ImageButton;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.nt118_nhom2_trips.Activity_Hotel;
 import com.example.nt118_nhom2_trips.Activity_Tour;
 import com.example.nt118_nhom2_trips.CreateNewTrip;
 import com.example.nt118_nhom2_trips.R;
-import com.example.nt118_nhom2_trips.databinding.FragmentHomeBinding;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import PlaceName.PlaceName;
+import PlaceName.PlaceNameAdapater;
 
 
 public class HomeFragment extends Fragment {
 
-    private FragmentHomeBinding binding;
     private Button create;
     private ImageButton hotel, tour, youTrip;
-    //private RecyclerView rcvCategory;
-    //private PlaceNameAdapater placeNameAdapater;
+    private RecyclerView rcvCategory;
+    private PlaceNameAdapater placeNameAdapater;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -35,17 +41,30 @@ public class HomeFragment extends Fragment {
         hotel = v.findViewById(R.id.btn_hotel);
         tour = v.findViewById(R.id.btn_tour);
         youTrip = v.findViewById(R.id.ibtn_yourTrip);
+        rcvCategory = v.findViewById(R.id.rcv_category);
 
 
         initListener();
 
-        return v;
-    }
+        List<PlaceName> list = new ArrayList<>();
+        list.add(new PlaceName(R.drawable.catba_haiphong, "Cát Bà, Hải Phòng"));
+        list.add(new PlaceName(R.drawable.dalat_lamdong, "Đà Lạt, Lâm Đồng"));
+        list.add(new PlaceName(R.drawable.cauvang, "Cầu Vàng, Đà Nẵng"));
+        list.add(new PlaceName(R.drawable.daocoto_quangninh, "Cô Tô, Quảng Ninh"));
+        list.add(new PlaceName(R.drawable.daothoison_bentre, "Đảo Thới Sơn, Bến Tre"));
+        list.add(new PlaceName(R.drawable.mocchau, "Mộc Châu, Sơn La"));
+        list.add(new PlaceName(R.drawable.nhatrang_khanhhoa, "Nha Trang, Khánh Hòa"));
+        list.add(new PlaceName(R.drawable.tadung_daknong, "Tà Đùng, Đăk Nông"));
+        list.add(new PlaceName(R.drawable.sapa, "SaPa, Lào Cai"));
+        list.add(new PlaceName(R.drawable.samson_thanhhoa, "Sầm Sơn, Thanh Hóa"));
+        RecyclerView.LayoutManager linearLayoutManager = new LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false);
 
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        binding = null;
+        rcvCategory.setLayoutManager(linearLayoutManager);
+        placeNameAdapater = new PlaceNameAdapater(list);
+
+        rcvCategory.setAdapter(placeNameAdapater);
+
+        return v;
     }
     private void initListener(){
         create.setOnClickListener(new View.OnClickListener() {

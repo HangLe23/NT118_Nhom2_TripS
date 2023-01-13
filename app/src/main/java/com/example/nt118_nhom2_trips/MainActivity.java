@@ -1,94 +1,119 @@
 package com.example.nt118_nhom2_trips;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
+
+import android.net.Uri;
 import android.os.Bundle;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 
-import com.example.nt118_nhom2_trips.databinding.ActivityMainBinding;
+import com.bumptech.glide.Glide;
+import com.example.nt118_nhom2_trips.ui.home.HomeFragment;
+import com.example.nt118_nhom2_trips.ui.profile.ProfileFragment;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
-import java.util.ArrayList;
-import java.util.List;
 
-import PlaceName.PlaceName;
-import PlaceName.PlaceNameAdapater;
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
-public class MainActivity extends AppCompatActivity {
-
-    private AppBarConfiguration mAppBarConfiguration;
-    private ActivityMainBinding binding;
-    private RecyclerView rcvCategory;
-    private PlaceNameAdapater placeNameAdapater;
-    //private Button create;
+    private DrawerLayout drawerLayout;
+    private Toolbar toolbar;
+    private ImageView avatar;
+    private TextView tvname, tvmail;
+    private NavigationView navigationView;
+    private static final int Fragment_home = 0;
+    private static final int Fragment_profile = 1;
+    private int numFragment = Fragment_home;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main);
+        findViewByIds();
 
-        binding = ActivityMainBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
+        setSupportActionBar(toolbar);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar,
+                R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawerLayout.addDrawerListener(toggle);
+        toggle.syncState();
+        navigationView.setNavigationItemSelectedListener(this);
 
-        setSupportActionBar(binding.appBarMain.toolbar);
-        /*binding.appBarMain.fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });*/
-        DrawerLayout drawer = binding.drawerLayout;
-        NavigationView navigationView = binding.navView;
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
-        mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home)
-                .setOpenableLayout(drawer)
-                .build();
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
-        NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
-        NavigationUI.setupWithNavController(navigationView, navController);
+        replaceFragment(new HomeFragment());
+        navigationView.getMenu().findItem(R.id.nav_home).setChecked(true);
 
-        rcvCategory = findViewById(R.id.rcv_category);
-
-        List<PlaceName> list = new ArrayList<>();
-        list.add(new PlaceName(R.drawable.catba_haiphong, "Cát Bà, Hải Phòng"));
-        list.add(new PlaceName(R.drawable.dalat_lamdong, "Đà Lạt, Lâm Đồng"));
-        list.add(new PlaceName(R.drawable.cauvang, "Cầu Vàng, Đà Nẵng"));
-        list.add(new PlaceName(R.drawable.daocoto_quangninh, "Cô Tô, Quảng Ninh"));
-        list.add(new PlaceName(R.drawable.daothoison_bentre, "Đảo Thới Sơn, Bến Tre"));
-        list.add(new PlaceName(R.drawable.mocchau, "Mộc Châu, Sơn La"));
-        list.add(new PlaceName(R.drawable.nhatrang_khanhhoa, "Nha Trang, Khánh Hòa"));
-        list.add(new PlaceName(R.drawable.tadung_daknong, "Tà Đùng, Đăk Nông"));
-        list.add(new PlaceName(R.drawable.sapa, "SaPa, Lào Cai"));
-        list.add(new PlaceName(R.drawable.samson_thanhhoa, "Sầm Sơn, Thanh Hóa"));
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false);
-
-        rcvCategory.setLayoutManager(linearLayoutManager);
-        placeNameAdapater = new PlaceNameAdapater(list);
-
-        rcvCategory.setAdapter(placeNameAdapater);
+        //showUserInformation();
     }
 
-    /*@Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
-    }*/
+    private void findViewByIds(){
+        toolbar = findViewById(R.id.toolbar);
+        drawerLayout = findViewById(R.id.drawer_layout);
+        navigationView = findViewById(R.id.nav_view);
+        avatar = findViewById(R.id.img_avatar);
+        tvname = findViewById(R.id.tv_name);
+        tvmail = findViewById(R.id.tv_email);
+    }
+
+    private void showUserInformation(){
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if(user == null){
+            return;
+        }
+        String name = user.getDisplayName();
+        String email = user.getEmail();
+        Uri photoUrl = user.getPhotoUrl();
+
+        if(name == null){
+            tvname.setVisibility(View.GONE);
+        } else {
+            tvname.setVisibility(View.VISIBLE);
+            tvname.setText(name);
+        }
+        tvmail.setText(email);
+        Glide.with(this).load(photoUrl).error(R.drawable.ic_avatar).into(avatar);
+    }
 
     @Override
-    public boolean onSupportNavigateUp() {
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
-        return NavigationUI.navigateUp(navController, mAppBarConfiguration)
-                || super.onSupportNavigateUp();
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        int id = item.getItemId();
+        if(id == R.id.nav_home){
+            if(numFragment != Fragment_home){
+                replaceFragment(new HomeFragment());
+                numFragment = Fragment_home;
+            }
+        } else if(id == R.id.nav_Profile){
+            if(numFragment != Fragment_profile){
+                replaceFragment(new ProfileFragment());
+                numFragment = Fragment_profile;
+            }
+        }
+        drawerLayout.closeDrawer(GravityCompat.START);
+        return true;
+    }
+
+    @Override
+    public void onBackPressed() {
+        if(drawerLayout.isDrawerOpen(GravityCompat.START)){
+            drawerLayout.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
+    }
+
+    private void replaceFragment(Fragment fragment){
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.content_frame, fragment);
+        fragmentTransaction.commit();
     }
 }
