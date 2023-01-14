@@ -47,9 +47,12 @@
         <entry key="..\:/NT118_PTUDDD/NT118_Nhom2_TripS/app/src/main/res/layout/content_main2.xml" value="0.25" />
         <entry key="..\:/NT118_PTUDDD/NT118_Nhom2_TripS/app/src/main/res/layout/create_newtrip.xml" value="0.264" />
         <entry key="..\:/NT118_PTUDDD/NT118_Nhom2_TripS/app/src/main/res/layout/forgot_pass.xml" value="0.22826086956521738" />
+        <entry key="..\:/NT118_PTUDDD/NT118_Nhom2_TripS/app/src/main/res/layout/fragment_change_pass.xml" value="0.2" />
+        <entry key="..\:/NT118_PTUDDD/NT118_Nhom2_TripS/app/src/main/res/layout/fragment_changepass.xml" value="0.16" />
+        <entry key="..\:/NT118_PTUDDD/NT118_Nhom2_TripS/app/src/main/res/layout/fragment_changepassword.xml" value="0.1" />
         <entry key="..\:/NT118_PTUDDD/NT118_Nhom2_TripS/app/src/main/res/layout/fragment_gallery.xml" value="0.25" />
         <entry key="..\:/NT118_PTUDDD/NT118_Nhom2_TripS/app/src/main/res/layout/fragment_home.xml" value="0.1875" />
-        <entry key="..\:/NT118_PTUDDD/NT118_Nhom2_TripS/app/src/main/res/layout/fragment_profile.xml" value="0.1" />
+        <entry key="..\:/NT118_PTUDDD/NT118_Nhom2_TripS/app/src/main/res/layout/fragment_profile.xml" value="0.2" />
         <entry key="..\:/NT118_PTUDDD/NT118_Nhom2_TripS/app/src/main/res/layout/home.xml" value="0.20512820512820512" />
         <entry key="..\:/NT118_PTUDDD/NT118_Nhom2_TripS/app/src/main/res/layout/item_diadanh.xml" value="0.264" />
         <entry key="..\:/NT118_PTUDDD/NT118_Nhom2_TripS/app/src/main/res/layout/item_hotel.xml" value="0.20427350427350427" />
@@ -58,7 +61,7 @@
         <entry key="..\:/NT118_PTUDDD/NT118_Nhom2_TripS/app/src/main/res/layout/nav_header_main.xml" value="0.1" />
         <entry key="..\:/NT118_PTUDDD/NT118_Nhom2_TripS/app/src/main/res/layout/nav_hearder_main.xml" value="0.24895833333333334" />
         <entry key="..\:/NT118_PTUDDD/NT118_Nhom2_TripS/app/src/main/res/layout/plan_trip.xml" value="0.24895833333333334" />
-        <entry key="..\:/NT118_PTUDDD/NT118_Nhom2_TripS/app/src/main/res/layout/reset_pass.xml" value="0.24895833333333334" />
+        <entry key="..\:/NT118_PTUDDD/NT118_Nhom2_TripS/app/src/main/res/layout/reset_pass.xml" value="0.1" />
         <entry key="..\:/NT118_PTUDDD/NT118_Nhom2_TripS/app/src/main/res/layout/search_hotel.xml" value="0.2" />
         <entry key="..\:/NT118_PTUDDD/NT118_Nhom2_TripS/app/src/main/res/layout/search_tour.xml" value="0.20427350427350427" />
         <entry key="..\:/NT118_PTUDDD/NT118_Nhom2_TripS/app/src/main/res/layout/sign_in.xml" value="0.25" />

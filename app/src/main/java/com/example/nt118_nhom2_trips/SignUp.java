@@ -21,7 +21,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class SignUp extends AppCompatActivity {
-    private EditText Email, Pass, et_Confirm_pass;
+    private EditText Email, Pass, et_Confirm_pass, Name;
     private Button SignUp, back;
     private ProgressDialog progressDialog;
 
@@ -37,15 +37,22 @@ public class SignUp extends AppCompatActivity {
     }
 
     private void findViewByIds(){
+        back = (Button) findViewById(R.id.btn_back);
         SignUp = (Button) findViewById(R.id.button);
         Email = (EditText) findViewById(R.id.et_Email);
         Pass = (EditText) findViewById(R.id.et_Password);
-
-
+        Name = (EditText)findViewById(R.id.et_Name);
         progressDialog = new ProgressDialog(this);
     }
 
     private void initListener(){
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent iNewActivity = new Intent(SignUp.this, NewActivity.class);
+                startActivity(iNewActivity);
+            }
+        });
         SignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -59,6 +66,7 @@ public class SignUp extends AppCompatActivity {
     private void onClickSignUp() {
         String email = Email.getText().toString().trim();
         String pass = Pass.getText().toString().trim();
+        //String name = Name.getText().toString().trim();
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
         progressDialog.show();
         mAuth.createUserWithEmailAndPassword(email, pass)
@@ -74,10 +82,8 @@ public class SignUp extends AppCompatActivity {
 
                         } else {
                             // If sign in fails, display a message to the user.
-
                             Toast.makeText(SignUp.this, "Authentication failed.",
                                     Toast.LENGTH_SHORT).show();
-
                         }
                     }
                 });

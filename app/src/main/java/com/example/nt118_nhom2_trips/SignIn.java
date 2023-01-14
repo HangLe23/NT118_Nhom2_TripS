@@ -24,7 +24,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class SignIn extends AppCompatActivity {
 
-    private Button btn_Enter;
+    private Button btn_Enter, back;
     private EditText Email, Pass;
     private ProgressDialog progressDialog;
 
@@ -41,6 +41,7 @@ public class SignIn extends AppCompatActivity {
 
     }
     private void findViewByIds(){
+        back = (Button) findViewById(R.id.btn_back);
         btn_Enter = (Button) findViewById(R.id.btn_next);
         Email = (EditText) findViewById(R.id.et_Mail);
         Pass = (EditText) findViewById(R.id.et_Password);
@@ -50,6 +51,13 @@ public class SignIn extends AppCompatActivity {
         progressDialog = new ProgressDialog(this);
     }
     private void initListener() {
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent iNewActivity = new Intent(SignIn.this, NewActivity.class);
+                startActivity(iNewActivity);
+            }
+        });
 
         btn_Enter.setOnClickListener(new View.OnClickListener() {
             @Override
