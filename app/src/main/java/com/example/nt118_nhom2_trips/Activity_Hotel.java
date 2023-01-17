@@ -7,17 +7,16 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
-import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import Hotel.Hotel;
-import Hotel.HotelAdapter;
-import PlaceName.PlaceName;
-import PlaceName.PlaceNameAdapater;
+import com.example.nt118_nhom2_trips.Hotel.Hotel;
+import com.example.nt118_nhom2_trips.Hotel.HotelAdapter;
+import com.example.nt118_nhom2_trips.PlaceName.PlaceName;
+import com.example.nt118_nhom2_trips.PlaceName.PlaceNameAdapater;
 
 public class Activity_Hotel extends AppCompatActivity {
     private RecyclerView rcvCategory, rcvCategoryHotel;

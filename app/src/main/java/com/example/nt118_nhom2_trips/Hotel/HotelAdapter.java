@@ -1,4 +1,4 @@
-package Hotel;
+package com.example.nt118_nhom2_trips.Hotel;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,8 +12,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.nt118_nhom2_trips.R;
 
 import java.util.List;
-
-import de.hdodenhof.circleimageview.CircleImageView;
 
 public class HotelAdapter extends RecyclerView.Adapter<HotelAdapter.HotelViewHolder>{
 

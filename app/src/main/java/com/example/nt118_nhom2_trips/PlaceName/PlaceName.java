@@ -1,4 +1,4 @@
-package PlaceName;
+package com.example.nt118_nhom2_trips.PlaceName;
 
 public class PlaceName {
     private int id;

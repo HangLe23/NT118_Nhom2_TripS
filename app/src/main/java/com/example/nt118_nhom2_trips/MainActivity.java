@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private int numFragment = Fragment_home;
     public static final int MY_REQUEST_CODE = 10;
     final private ProfileFragment profileFragment = new ProfileFragment();
-    final private ActivityResultLauncher<Intent> activityResultLauncher = registerForActivityResult(
+    /*final private ActivityResultLauncher<Intent> activityResultLauncher = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
                 @Override
                 public void onActivityResult(ActivityResult result) {
@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                         }
                     }
                 }
-            });
+            });*/
 
 
     @Override
@@ -130,7 +130,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
         } else if(id == R.id.nav_Profile){
             if(numFragment != Fragment_profile){
-                replaceFragment(profileFragment);
+                replaceFragment(new ProfileFragment());
                 numFragment = Fragment_profile;
             }
         }
@@ -163,7 +163,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         fragmentTransaction.commit();
     }
 
-    @Override
+    /*@Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if(requestCode == MY_REQUEST_CODE){
@@ -174,12 +174,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 //
             }
         }
-    }
+    }*/
 
-    public void openGallery(){
+    /*public void openGallery(){
         Intent intent = new Intent();
         intent.setType("image/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
         activityResultLauncher.launch(Intent.createChooser(intent, "Select picture"));
-    }
+    }*/
 }

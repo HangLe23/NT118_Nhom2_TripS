@@ -23,11 +23,17 @@ import androidx.fragment.app.Fragment;
 import com.bumptech.glide.Glide;
 import com.example.nt118_nhom2_trips.MainActivity;
 import com.example.nt118_nhom2_trips.R;
+import com.example.nt118_nhom2_trips.user.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -37,20 +43,40 @@ public class ProfileFragment extends Fragment {
     private CircleImageView imgavatar;
     private EditText fullname, email, birthday, gender, phone;
     private Button btnEdit;
+    private FirebaseDatabase firebaseDatabase;
+    private DatabaseReference databaseReference;
+    private String key;
     private Uri mUri;
-    MainActivity mainActivity;
-    @Nullable
-    @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    //MainActivity mainActivity;
+    //@Nullable
+    //@Override
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_profile, container, false);
         findViewByIds();
-        mainActivity = (MainActivity) getActivity();
-        setUserInformation();
-        initListener();
+        //mainActivity = (MainActivity) getActivity();
+        /*firebaseDatabase = FirebaseDatabase.getInstance();
+        databaseReference = firebaseDatabase.getReference().child("User");
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                // This method is called once with the initial value and again
+                // whenever data at this location is updated.
+                User user = dataSnapshot.getValue(User.class);
+                fullname.setText(user.getFullname());
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                // Failed to read value
+            }
+        });*/
+
+        //setUserInformation();
+        //initListener();
         return view;
     }
 
-    private void initListener() {
+    /*private void initListener() {
         imgavatar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -71,12 +97,11 @@ public class ProfileFragment extends Fragment {
             return;
         }
         String FullName = fullname.getText().toString().trim();
-        String Phone = phone.getText().toString().trim();
+        String Birthday = birthday.getText().toString().trim();
         UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
                 .setDisplayName(FullName)
                 .setPhotoUri(mUri)
                 .build();
-
         user.updateProfile(profileUpdates)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
@@ -113,9 +138,10 @@ public class ProfileFragment extends Fragment {
         }
         fullname.setText(user.getDisplayName());
         email.setText(user.getEmail());
+        birthday.setText(user.getDisplayName());
         phone.setText(user.getPhoneNumber());
         Glide.with(getActivity()).load(user.getPhotoUrl()).error(R.drawable.ic_avatar).into(imgavatar);
-    }
+    }*/
 
     private void findViewByIds(){
         imgavatar = view.findViewById(R.id.img_avatar);
@@ -126,11 +152,11 @@ public class ProfileFragment extends Fragment {
         phone = view.findViewById(R.id.et_phone);
         btnEdit = view.findViewById(R.id.btn_edit);
     }
-    public void setBitmapImageView(Bitmap bitmap){
+    /*public void setBitmapImageView(Bitmap bitmap){
         imgavatar.setImageBitmap(bitmap);
     }
 
     public void setmUri(Uri mUri) {
         this.mUri = mUri;
-    }
+    }*/
 }

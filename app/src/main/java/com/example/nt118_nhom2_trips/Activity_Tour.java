@@ -12,8 +12,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
-import PlaceName.PlaceName;
-import PlaceName.PlaceNameAdapater;
+import com.example.nt118_nhom2_trips.PlaceName.PlaceName;
+import com.example.nt118_nhom2_trips.PlaceName.PlaceNameAdapater;
 
 public class Activity_Tour extends AppCompatActivity {
     private RecyclerView rcvCategory;

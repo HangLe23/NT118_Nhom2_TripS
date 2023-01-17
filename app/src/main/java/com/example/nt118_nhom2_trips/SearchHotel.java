@@ -1,7 +1,6 @@
 package com.example.nt118_nhom2_trips;
 
 import android.os.Bundle;
-import android.view.Menu;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
@@ -12,8 +11,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
-import Hotel.Hotel;
-import Hotel.HotelAdapter;
+import com.example.nt118_nhom2_trips.Hotel.Hotel;
+import com.example.nt118_nhom2_trips.Hotel.HotelAdapter;
 
 public class SearchHotel extends AppCompatActivity {
     private RecyclerView rcvHotel;

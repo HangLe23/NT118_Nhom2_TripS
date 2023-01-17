@@ -1,10 +1,9 @@
-package PlaceName;
+package com.example.nt118_nhom2_trips.PlaceName;
 
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.TextView;
 

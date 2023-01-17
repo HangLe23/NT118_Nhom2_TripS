@@ -21,8 +21,8 @@ import com.example.nt118_nhom2_trips.R;
 import java.util.ArrayList;
 import java.util.List;
 
-import PlaceName.PlaceName;
-import PlaceName.PlaceNameAdapater;
+import com.example.nt118_nhom2_trips.PlaceName.PlaceName;
+import com.example.nt118_nhom2_trips.PlaceName.PlaceNameAdapater;
 
 
 public class HomeFragment extends Fragment {

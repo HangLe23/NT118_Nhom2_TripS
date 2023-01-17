@@ -1,11 +1,11 @@
-package Tour;
+package com.example.nt118_nhom2_trips.Hotel;
 
-public class Tour {
+public class Hotel {
     private int image;
     private String name;
     private String address;
 
-    public Tour(int image, String name, String address) {
+    public Hotel(int image, String name, String address) {
         this.image = image;
         this.name = name;
         this.address = address;
