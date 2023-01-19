@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -29,6 +30,8 @@ public class SignIn extends AppCompatActivity {
     private Button btn_back;
     private ImageButton btn_Enter;
     private EditText Email, Pass;
+    private TextView tv_ForgetPass;
+
     private ProgressDialog progressDialog;
     private FirebaseAuth mAuth;
 
@@ -41,6 +44,8 @@ public class SignIn extends AppCompatActivity {
         initListener();
     }
     private void findViewByIds(){
+        tv_ForgetPass = (TextView) findViewById(R.id.forgotpass);
+
         btn_back = (Button) findViewById(R.id.btn_back);
         btn_Enter = (ImageButton) findViewById(R.id.ibtn_next);
         Email = (EditText) findViewById(R.id.et_Mail);
@@ -60,6 +65,31 @@ public class SignIn extends AppCompatActivity {
                 onclickSignIn();
             }
         });
+        tv_ForgetPass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onClickForgetPass();
+            }
+        });
+    }
+
+    private void onClickForgetPass() {
+        progressDialog.show();
+        FirebaseAuth auth = FirebaseAuth.getInstance();
+        String emailAddress= Email.getText().toString();
+
+        auth.sendPasswordResetEmail(emailAddress)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()) {
+                            progressDialog.dismiss();
+
+                            Toast.makeText(SignIn.this, "Email sent", Toast.LENGTH_SHORT).show();
+
+                        }
+                    }
+                });
     }
 
     private void onclickSignIn() {

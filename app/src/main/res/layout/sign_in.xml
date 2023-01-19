@@ -83,11 +83,11 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="30dp"
-        android:id="@+id/forgotpass"
         app:layout_constraintTop_toBottomOf="@+id/et_Password"
         app:layout_constraintRight_toRightOf="parent"
         android:orientation="vertical">
         <TextView
+            android:id="@+id/forgotpass"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Quên mật khẩu?"
