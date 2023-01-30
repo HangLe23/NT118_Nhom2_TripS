@@ -43,6 +43,7 @@ public class ProfileFragment extends Fragment {
     private CircleImageView imgavatar;
     private EditText fullname, email, birthday, gender, phone;
     private Button btnEdit;
+    private FirebaseAuth authProfile;
     private FirebaseDatabase firebaseDatabase;
     private DatabaseReference databaseReference;
     private String key;
@@ -53,9 +54,12 @@ public class ProfileFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_profile, container, false);
         findViewByIds();
+
+        authProfile = FirebaseAuth.getInstance();
+        FirebaseUser user = authProfile.getCurrentUser();
         //mainActivity = (MainActivity) getActivity();
-        /*firebaseDatabase = FirebaseDatabase.getInstance();
-        databaseReference = firebaseDatabase.getReference().child("User");
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        databaseReference = firebaseDatabase.getReference("User");
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -63,17 +67,30 @@ public class ProfileFragment extends Fragment {
                 // whenever data at this location is updated.
                 User user = dataSnapshot.getValue(User.class);
                 fullname.setText(user.getFullname());
+                email.setText(user.getEmail());
+                gender.setText(user.getGender());
+                phone.setText(user.getPhone());
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
                 // Failed to read value
             }
-        });*/
+        });
 
         //setUserInformation();
         //initListener();
         return view;
+    }
+
+    private void findViewByIds(){
+        imgavatar = view.findViewById(R.id.img_avatar);
+        fullname = view.findViewById(R.id.et_fullname);
+        email = view.findViewById(R.id.et_email);
+        birthday = view.findViewById(R.id.et_birthday);
+        gender = view.findViewById(R.id.et_gender);
+        phone = view.findViewById(R.id.et_phone);
+        btnEdit = view.findViewById(R.id.btn_edit);
     }
 
     /*private void initListener() {
@@ -143,15 +160,6 @@ public class ProfileFragment extends Fragment {
         Glide.with(getActivity()).load(user.getPhotoUrl()).error(R.drawable.ic_avatar).into(imgavatar);
     }*/
 
-    private void findViewByIds(){
-        imgavatar = view.findViewById(R.id.img_avatar);
-        fullname = view.findViewById(R.id.et_fullname);
-        email = view.findViewById(R.id.et_email);
-        birthday = view.findViewById(R.id.et_birthday);
-        gender = view.findViewById(R.id.et_gender);
-        phone = view.findViewById(R.id.et_phone);
-        btnEdit = view.findViewById(R.id.btn_edit);
-    }
     /*public void setBitmapImageView(Bitmap bitmap){
         imgavatar.setImageBitmap(bitmap);
     }

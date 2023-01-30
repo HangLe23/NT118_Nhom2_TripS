@@ -75,12 +75,12 @@ public class SignUp extends AppCompatActivity {
         String gender = Gender.getText().toString();
         String phone = PhoneNumber.getText().toString();
         user = new User(email, pass, fullName, gender, phone);
-        //progressDialog.show();
+        progressDialog.show();
         mAuth.createUserWithEmailAndPassword(email, pass)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        //progressDialog.dismiss();
+                        progressDialog.dismiss();
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
 
@@ -89,7 +89,7 @@ public class SignUp extends AppCompatActivity {
                             databaseReference.setValue(user);
                             Intent intent = new Intent(SignUp.this, SignIn.class);
                             startActivity(intent);
-                            //finish();
+                            finish();
                         } else {
                             // If sign in fails, display a message to the user.
 
