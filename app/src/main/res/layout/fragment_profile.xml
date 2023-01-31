@@ -21,7 +21,7 @@
 
     </LinearLayout>
 
-    <EditText
+    <TextView
         android:id="@+id/et_fullname"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -34,7 +34,7 @@
         android:layout_marginRight="50dp"
         android:layout_marginLeft="50dp"/>
 
-    <EditText
+    <TextView
         android:id="@+id/et_birthday"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -43,11 +43,11 @@
         android:textSize="20sp"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="50dp"
         android:layout_marginRight="50dp"
         android:layout_marginLeft="50dp" />
 
-    <EditText
+    <TextView
         android:id="@+id/et_gender"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -56,11 +56,11 @@
         android:textSize="20sp"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="50dp"
         android:layout_marginRight="50dp"
         android:layout_marginLeft="50dp" />
 
-    <EditText
+    <TextView
         android:id="@+id/et_email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -69,11 +69,11 @@
         android:textSize="20sp"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="50dp"
         android:layout_marginRight="50dp"
         android:layout_marginLeft="50dp" />
 
-    <EditText
+    <TextView
         android:id="@+id/et_phone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -82,7 +82,7 @@
         android:textSize="20sp"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="50dp"
         android:layout_marginRight="50dp"
         android:layout_marginLeft="50dp" />
 
@@ -95,7 +95,7 @@
         android:textSize="20sp"
         android:textColor="#335058"
         android:textColorHint="@color/white"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="50dp"
         android:layout_marginRight="50dp"
         android:layout_marginLeft="50dp"
         android:background="#DEC854"
