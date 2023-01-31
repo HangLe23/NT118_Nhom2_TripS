@@ -8,6 +8,8 @@ import android.widget.ImageButton;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.nt118_nhom2_trips.CreateNewTrip.CreateNewTrip;
+
 public class PlanTrip extends AppCompatActivity {
     private Button back;
     private ImageButton add;

@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#335058"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_back2"
+            android:layout_width="66dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/ic_arrow_back_yellow" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="317dp"
+            android:layout_height="35dp"
+            android:fontFamily="@font/karla_bold"
+            android:paddingRight="80px"
+            android:text="TextView"
+            android:textAlignment="viewEnd"
+            android:textColor="#FFFFFF"
+            android:textSize="25sp"
+            android:translationY="45px" />
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rcv_date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#335058"
+        android:padding="50px">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rcv_activity"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="#335058"
+        android:padding="50px">
+
+    </androidx.recyclerview.widget.RecyclerView>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#335058"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:id="@+id/View_activity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#DEC854"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/et_time_activity"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="100px"
+                android:layout_marginRight="40dp"
+                android:fontFamily="@font/inter_medium"
+                android:hint="Thời gian"
+                android:textColor="@color/black"
+                android:textColorHint="@color/black"
+                android:textSize="18sp"/>
+
+            <EditText
+                android:id="@+id/et_name_activity"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="50px"
+                android:layout_marginRight="40dp"
+                android:fontFamily="@font/inter_medium"
+                android:hint="Tên hoạt động"
+                android:textColor="@color/black"
+                android:textColorHint="@color/black"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/et_detail_activity"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="50px"
+                android:layout_marginRight="40dp"
+                android:fontFamily="@font/inter_medium"
+                android:hint="Chi tiết"
+                android:textColor="@color/white"
+                android:textColorHint="@color/black"
+                android:textSize="18sp" />
+
+            <Button
+                android:id="@+id/btn_Save_activity"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_marginLeft="300dp"
+                android:layout_marginTop="50px"
+                android:layout_marginBottom="100dp"
+                android:background="@drawable/ic_baseline_add_circle_24" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_Enter"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginLeft="300dp"
+            android:layout_marginTop="20px"
+            android:layout_marginBottom="100dp"
+            android:background="@drawable/ic_arrow_right_circle_icon" />
+    </LinearLayout>
+</LinearLayout>

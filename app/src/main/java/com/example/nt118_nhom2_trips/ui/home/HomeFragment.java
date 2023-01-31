@@ -15,7 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.nt118_nhom2_trips.Activity_Hotel;
 import com.example.nt118_nhom2_trips.Activity_Tour;
-import com.example.nt118_nhom2_trips.CreateNewTrip;
+import com.example.nt118_nhom2_trips.CreateNewTrip.CreateNewTrip;
 import com.example.nt118_nhom2_trips.R;
 
 import java.util.ArrayList;

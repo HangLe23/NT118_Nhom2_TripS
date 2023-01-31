@@ -12,4 +12,12 @@
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
     <string name="title_activity_main">MainActivity</string>
+    <string-array name="place">
+        <item>Thành phố Hồ Chí Minh</item>
+        <item>Hà Nội</item>
+        <item>Đà Lạt</item>
+        <item>Đà Nẵng</item>
+        <item>Phú Quốc</item>
+        <item>Vũng Tàu</item>
+    </string-array>
 </resources>
