@@ -124,7 +124,6 @@ public class CreateNewTrip extends AppCompatActivity implements DatePickerDialog
                 bundle.putString("trip_id", id);
                 //bundle.putString("user_id", user_id);
                 intent.putExtras(bundle);
-                Toast.makeText(CreateNewTrip.this, "Hello",Toast.LENGTH_SHORT).show();
                 startActivity(intent);
                 finish();
             }

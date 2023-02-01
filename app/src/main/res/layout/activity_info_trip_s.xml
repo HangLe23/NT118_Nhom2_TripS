@@ -101,7 +101,7 @@
                 android:layout_marginRight="40dp"
                 android:fontFamily="@font/inter_medium"
                 android:hint="Chi tiết"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:textColorHint="@color/black"
                 android:textSize="18sp" />
 

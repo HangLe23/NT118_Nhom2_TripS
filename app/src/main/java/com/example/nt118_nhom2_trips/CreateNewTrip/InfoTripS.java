@@ -1,6 +1,7 @@
 package com.example.nt118_nhom2_trips.CreateNewTrip;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -19,10 +20,12 @@ import android.widget.Toast;
 
 import com.example.nt118_nhom2_trips.R;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.text.ParseException;
@@ -39,12 +42,14 @@ public class InfoTripS extends AppCompatActivity {
     FirebaseAuth mAuth;
     Trips trip;
     int numberOfDays, hour, minute, day = 1;
-    RecyclerView rcv_day;
+    RecyclerView rcv_day, rcv_activity;
     DateAdapter dateAdapter;
+    ActivityAdapter activityAdapter;
     Date StartDate, EndDate;
     Button Btn_Open_View, Btn_Save_Infotrip;
     LinearLayout linearLayout;
     EditText time_text, name_text, detail_text;
+    List<Activity> mlistActivity;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,6 +57,7 @@ public class InfoTripS extends AppCompatActivity {
 
         TextView tv = findViewById(R.id.textView3);
         rcv_day = findViewById(R.id.rcv_date);
+        rcv_activity = findViewById(R.id.rcv_activity);
         Btn_Open_View = findViewById(R.id.btn_Enter);
         Btn_Save_Infotrip = findViewById(R.id.btn_Save_activity);
         linearLayout = findViewById(R.id.View_activity);
@@ -61,14 +67,19 @@ public class InfoTripS extends AppCompatActivity {
 
         linearLayout.setVisibility(View.GONE);
         dateAdapter = new DateAdapter(this);
+        activityAdapter = new ActivityAdapter(this);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false);
-        rcv_day.setLayoutManager(linearLayoutManager);
+        LinearLayoutManager linearLayoutManager1 = new LinearLayoutManager(this, RecyclerView.VERTICAL, false);
 
+        rcv_day.setLayoutManager(linearLayoutManager);
+        rcv_activity.setLayoutManager(linearLayoutManager1);
+        mlistActivity = new ArrayList<Activity>();
+        activityAdapter.setData(mlistActivity);
+        rcv_activity.setAdapter(activityAdapter);
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
         if (bundle!=null) {
             tripId = bundle.getString("trip_id","");
-            // userId = bundle.getString("user_id", "");
         }
 
         mAuth = FirebaseAuth.getInstance();
@@ -79,7 +90,6 @@ public class InfoTripS extends AppCompatActivity {
         mDatabaseTrip.child(tripId).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                Toast.makeText(InfoTripS.this, "Hello",Toast.LENGTH_SHORT).show();
                 trip = snapshot.getValue(Trips.class);
                 tv.setText(trip.getName_trip());
                 StartDate = StringToDate(trip.getStart_date_trip());
@@ -184,10 +194,47 @@ public class InfoTripS extends AppCompatActivity {
 
     public void Save_Activity() {
         mDatabaseActivity = FirebaseDatabase.getInstance().getReference().child("Activity");
-        //id = mDatabaseUser.child("Activity").push().getKey();
+        userId = mAuth.getCurrentUser().getUid();
         id = mDatabaseActivity.push().getKey();
         Activity activity = new Activity(tripId, userId, day + "", time_text.getText().toString(), name_text.getText().toString(), detail_text.getText().toString());
-        mDatabaseUser.child("Activity").child(id).setValue(activity);
+        mDatabaseActivity.child(id).setValue(activity);
+        time_text.setText(time_text.getHint());
+        name_text.setText(name_text.getHint());
+        detail_text.setText(detail_text.getHint());
+
+        Query query = mDatabaseActivity.orderByChild("id").equalTo(userId);//.orderByChild("trip_id").equalTo(tripId).orderByChild("day").equalTo("1");
+        query.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                Activity activity1 = snapshot.getValue(Activity.class);
+                if (activity1 != null) {
+                    mlistActivity.add(activity1);
+                    activityAdapter.notifyDataSetChanged();
+                }
+
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
         if (linearLayout.getVisibility() == View.VISIBLE) {
             linearLayout.setVisibility(View.GONE);
             Btn_Open_View.setVisibility(View.VISIBLE);
