@@ -19,6 +19,8 @@ import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.example.nt118_nhom2_trips.R;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -36,7 +38,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 
-public class InfoTripS extends AppCompatActivity {
+public class InfoTripS extends AppCompatActivity implements OnItemClickListener{
     String tripId, userId, id;
     DatabaseReference mDatabase, mDatabaseUser, mDatabaseTrip, mDatabaseActivity;
     FirebaseAuth mAuth;
@@ -50,6 +52,8 @@ public class InfoTripS extends AppCompatActivity {
     LinearLayout linearLayout;
     EditText time_text, name_text, detail_text;
     List<Activity> mlistActivity;
+    List<com.example.nt118_nhom2_trips.CreateNewTrip.Date> mlistDate;
+    Activity activity;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,7 +70,7 @@ public class InfoTripS extends AppCompatActivity {
         detail_text = (EditText) findViewById(R.id.et_detail_activity);
 
         linearLayout.setVisibility(View.GONE);
-        dateAdapter = new DateAdapter(this);
+        dateAdapter = new DateAdapter(mlistDate, this);
         activityAdapter = new ActivityAdapter(this);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false);
         LinearLayoutManager linearLayoutManager1 = new LinearLayoutManager(this, RecyclerView.VERTICAL, false);
@@ -74,8 +78,6 @@ public class InfoTripS extends AppCompatActivity {
         rcv_day.setLayoutManager(linearLayoutManager);
         rcv_activity.setLayoutManager(linearLayoutManager1);
         mlistActivity = new ArrayList<Activity>();
-        activityAdapter.setData(mlistActivity);
-        rcv_activity.setAdapter(activityAdapter);
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
         if (bundle!=null) {
@@ -87,6 +89,7 @@ public class InfoTripS extends AppCompatActivity {
         //mDatabaseUser = mDatabase.child(mAuth.getCurrentUser().getUid());
         //mDatabaseTrip = mDatabaseUser.child("Trips").child(tripId);
         mDatabaseTrip = FirebaseDatabase.getInstance().getReference().child("Trips");
+        mDatabaseActivity = FirebaseDatabase.getInstance().getReference().child("Activity");
         mDatabaseTrip.child(tripId).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -95,8 +98,11 @@ public class InfoTripS extends AppCompatActivity {
                 StartDate = StringToDate(trip.getStart_date_trip());
                 EndDate = StringToDate(trip.getEnd_date_trip());
                 numberOfDays = NumberOfDays(StartDate,EndDate);
-                dateAdapter.setData(getListDate());
+                mlistDate = getListDate();
+                dateAdapter.setData(mlistDate);
                 rcv_day.setAdapter(dateAdapter);
+                activityAdapter.setData(mlistActivity);
+                rcv_activity.setAdapter(activityAdapter);
             }
 
             @Override
@@ -193,16 +199,15 @@ public class InfoTripS extends AppCompatActivity {
     }
 
     public void Save_Activity() {
-        mDatabaseActivity = FirebaseDatabase.getInstance().getReference().child("Activity");
         userId = mAuth.getCurrentUser().getUid();
         id = mDatabaseActivity.push().getKey();
-        Activity activity = new Activity(tripId, userId, day + "", time_text.getText().toString(), name_text.getText().toString(), detail_text.getText().toString());
+        activity = new Activity(id, tripId, userId, day + "", time_text.getText().toString(), name_text.getText().toString(), detail_text.getText().toString());
         mDatabaseActivity.child(id).setValue(activity);
-        time_text.setText(time_text.getHint());
-        name_text.setText(name_text.getHint());
-        detail_text.setText(detail_text.getHint());
+        time_text.setText("");
+        name_text.setText("");
+        detail_text.setText("");
 
-        Query query = mDatabaseActivity.orderByChild("id").equalTo(userId);//.orderByChild("trip_id").equalTo(tripId).orderByChild("day").equalTo("1");
+        Query query = mDatabaseActivity.orderByChild("activity_id").equalTo(id);
         query.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
@@ -211,7 +216,10 @@ public class InfoTripS extends AppCompatActivity {
                     mlistActivity.add(activity1);
                     activityAdapter.notifyDataSetChanged();
                 }
-
+                String list = "";
+                for (int i = 0; i<mlistActivity.size(); i++){
+                    list += mlistActivity.get(i);
+                }
             }
 
             @Override
@@ -239,5 +247,35 @@ public class InfoTripS extends AppCompatActivity {
             linearLayout.setVisibility(View.GONE);
             Btn_Open_View.setVisibility(View.VISIBLE);
         }
+    }
+
+    public void ChangeDay() {
+        Query query = mDatabaseActivity.orderByChild("day").equalTo(day + "");
+        query.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                mlistActivity.clear();
+                for (DataSnapshot ds:snapshot.getChildren()) {
+                    Activity activity1 = ds.getValue(Activity.class);
+                    if (activity1.getId().contains(userId) && activity1.getTrip_id().contains(tripId)) {
+                        mlistActivity.add(activity1);
+                    }
+                }
+                activityAdapter.notifyDataSetChanged();
+                //rcv_activity.setAdapter(activityAdapter);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+
+    @Override
+    public void onItemClick(com.example.nt118_nhom2_trips.CreateNewTrip.Date date) {
+        String[] strDay = date.getDay().split(" ");
+        day = Integer.parseInt(strDay[1]);
+        ChangeDay();
     }
 }

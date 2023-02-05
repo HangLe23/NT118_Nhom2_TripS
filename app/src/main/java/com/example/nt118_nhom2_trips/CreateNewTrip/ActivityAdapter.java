@@ -41,6 +41,7 @@ public class ActivityAdapter extends RecyclerView.Adapter<ActivityAdapter.Activi
         holder.tv_time.setText(activity.getTime());
         holder.tv_name.setText(activity.getName());
         holder.tv_detail.setText(activity.getDetail());
+
     }
 
     @Override
