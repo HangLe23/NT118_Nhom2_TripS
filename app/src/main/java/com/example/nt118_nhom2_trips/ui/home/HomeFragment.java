@@ -13,7 +13,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.nt118_nhom2_trips.Activity_Hotel;
+import com.example.nt118_nhom2_trips.Hotel.Activity_Hotel;
 import com.example.nt118_nhom2_trips.Activity_Tour;
 import com.example.nt118_nhom2_trips.CreateNewTrip.CreateNewTrip;
 import com.example.nt118_nhom2_trips.R;

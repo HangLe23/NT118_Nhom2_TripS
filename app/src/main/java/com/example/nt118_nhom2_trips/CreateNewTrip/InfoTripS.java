@@ -267,7 +267,6 @@ public class InfoTripS extends AppCompatActivity implements OnItemClickListener{
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
             }
         });
     }

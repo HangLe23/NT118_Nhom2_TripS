@@ -1,4 +1,4 @@
-package com.example.nt118_nhom2_trips;
+package com.example.nt118_nhom2_trips.Hotel;
 
 import android.os.Bundle;
 
@@ -13,6 +13,7 @@ import java.util.List;
 
 import com.example.nt118_nhom2_trips.Hotel.Hotel;
 import com.example.nt118_nhom2_trips.Hotel.HotelAdapter;
+import com.example.nt118_nhom2_trips.R;
 
 public class SearchHotel extends AppCompatActivity {
     private RecyclerView rcvHotel;
@@ -26,8 +27,8 @@ public class SearchHotel extends AppCompatActivity {
         findViewByIds();
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         rcvHotel.setLayoutManager(linearLayoutManager);
-        hotelAdapter = new HotelAdapter(getList());
-        rcvHotel.setAdapter(hotelAdapter);
+        //hotelAdapter = new HotelAdapter(getList());
+        //rcvHotel.setAdapter(hotelAdapter);
 
         RecyclerView.ItemDecoration itemDecoration = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
         rcvHotel.addItemDecoration(itemDecoration);

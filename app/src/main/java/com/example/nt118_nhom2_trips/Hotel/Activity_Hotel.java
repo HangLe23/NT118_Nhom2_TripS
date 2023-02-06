@@ -1,10 +1,12 @@
-package com.example.nt118_nhom2_trips;
+package com.example.nt118_nhom2_trips.Hotel;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -13,22 +15,34 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.example.nt118_nhom2_trips.Hotel.Hotel;
-import com.example.nt118_nhom2_trips.Hotel.HotelAdapter;
+import com.example.nt118_nhom2_trips.MainActivity;
 import com.example.nt118_nhom2_trips.PlaceName.PlaceName;
 import com.example.nt118_nhom2_trips.PlaceName.PlaceNameAdapater;
+import com.example.nt118_nhom2_trips.R;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
-public class Activity_Hotel extends AppCompatActivity {
+public class Activity_Hotel extends AppCompatActivity implements OnHotelItemClickListener {
     private RecyclerView rcvCategory, rcvCategoryHotel;
     private PlaceNameAdapater placeNameAdapater;
     private HotelAdapter hotelAdapter;
     private Button backhome;
+    private DatabaseReference mDatabaseHotels;
+    private FirebaseAuth mAuth;
+    private List<Hotel> mListHotels;
+
     SearchView searchHotel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hotel);
+
         findViewByIds();
         getList();
         getListHotel();
@@ -53,6 +67,16 @@ public class Activity_Hotel extends AppCompatActivity {
         backhome = (Button) findViewById(R.id.btn_backhome);
         rcvCategoryHotel = findViewById(R.id.rcv_catoryhotel);
         searchHotel = findViewById(R.id.search_hotel);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, RecyclerView.VERTICAL, false);
+        mListHotels = new ArrayList<Hotel>();
+
+        mAuth = FirebaseAuth.getInstance();
+        hotelAdapter = new HotelAdapter (mListHotels, this);
+        mDatabaseHotels = FirebaseDatabase.getInstance().getReference().child("Hotels");
+
+        rcvCategoryHotel.setLayoutManager(linearLayoutManager);
+        hotelAdapter.setData(mListHotels);
+        rcvCategoryHotel.setAdapter(hotelAdapter);
     }
     private void getList(){
         List<PlaceName> list = new ArrayList<>();
@@ -75,7 +99,27 @@ public class Activity_Hotel extends AppCompatActivity {
         rcvCategory.setAdapter(placeNameAdapater);
     }
     private void getListHotel(){
-        List<Hotel> list = new ArrayList<>();
+        Query query = mDatabaseHotels;
+        query.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot ds:snapshot.getChildren()) {
+                    Toast.makeText(Activity_Hotel.this, "hello", Toast.LENGTH_SHORT).show();
+                    Hotel hotel = ds.getValue(Hotel.class);
+                    {
+                        Toast.makeText(Activity_Hotel.this, hotel.getImageUrl(), Toast.LENGTH_SHORT).show();
+                        mListHotels.add(hotel);
+                    }
+                }
+                hotelAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+        /*List<Hotel> list = new ArrayList<>();
         list.add(new Hotel(R.drawable.catba_haiphong, "Cát Bà, Hải Phòng", "5"));
         list.add(new Hotel(R.drawable.dalat_lamdong, "Đà Lạt, Lâm Đồng", "5"));
         list.add(new Hotel(R.drawable.cauvang, "Cầu Vàng, Đà Nẵng", "5"));
@@ -86,6 +130,11 @@ public class Activity_Hotel extends AppCompatActivity {
         rcvCategoryHotel.setLayoutManager(verticallinearLayoutManager);
         hotelAdapter = new HotelAdapter(list);
 
-        rcvCategoryHotel.setAdapter(hotelAdapter);
+        rcvCategoryHotel.setAdapter(hotelAdapter);*/
+    }
+
+    @Override
+    public void onHotelItemClick(Hotel hotel) {
+
     }
 }
