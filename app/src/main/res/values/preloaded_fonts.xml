@@ -4,5 +4,7 @@
         <item>@font/inter_medium</item>
         <item>@font/istok_web</item>
         <item>@font/karla_bold</item>
+        <item>@font/ubuntu</item>
+        <item>@font/ubuntu_bold</item>
     </array>
 </resources>

@@ -1,18 +1,18 @@
 package com.example.nt118_nhom2_trips.Hotel;
 
 public class Hotel {
-    private int id_hotel;
+    private String id_hotel;
     private String address;
     private String detail;
     private String imageUrl;
     private String name;
-    private int rate;
-    private boolean sale;
+    private String rate;
+    private String sale;
 
     public Hotel() {
     }
 
-    public Hotel(int id_hotel, String address, String detail, String imageUrl, String name, int rate, boolean sale) {
+    public Hotel(String id_hotel, String address, String detail, String imageUrl, String name, String rate, String sale) {
         this.id_hotel = id_hotel;
         this.address = address;
         this.detail = detail;
@@ -22,16 +22,16 @@ public class Hotel {
         this.sale = sale;
     }
 
-    public int getId_hotel() {
+    public String getId_hotel() {
         return id_hotel;
     }
 
-    public void setId_hotel(int id_hotel) {
+    public void setId_hotel(String id_hotel) {
         this.id_hotel = id_hotel;
     }
 
     public String getAddress() {
-        return address;
+        return this.address;
     }
 
     public void setAddress(String address) {
@@ -62,19 +62,19 @@ public class Hotel {
         this.name = name;
     }
 
-    public int getRate() {
+    public String getRate() {
         return rate;
     }
 
-    public void setRate(int rate) {
+    public void setRate(String rate) {
         this.rate = rate;
     }
 
-    public boolean isSale() {
+    public String isSale() {
         return sale;
     }
 
-    public void setSale(boolean sale) {
+    public void setSale(String sale) {
         this.sale = sale;
     }
 }

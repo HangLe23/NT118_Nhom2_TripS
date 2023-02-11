@@ -85,9 +85,6 @@ public class InfoTripS extends AppCompatActivity implements OnItemClickListener{
         }
 
         mAuth = FirebaseAuth.getInstance();
-        //mDatabase = FirebaseDatabase.getInstance().getReference().child("User");
-        //mDatabaseUser = mDatabase.child(mAuth.getCurrentUser().getUid());
-        //mDatabaseTrip = mDatabaseUser.child("Trips").child(tripId);
         mDatabaseTrip = FirebaseDatabase.getInstance().getReference().child("Trips");
         mDatabaseActivity = FirebaseDatabase.getInstance().getReference().child("Activity");
         mDatabaseTrip.child(tripId).addValueEventListener(new ValueEventListener() {

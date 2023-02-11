@@ -3,12 +3,14 @@
     android:layout_width="match_parent"
     android:layout_height="150dp"
     android:layout_marginEnd="5dp"
-    android:padding="10dp">
+    android:padding="10dp"
+    android:background="@drawable/border_hotel">
     <ImageView
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:id="@+id/img_hotel"
-        android:scaleType="centerCrop"/>
+        android:scaleType="centerCrop"
+        android:background="@drawable/border_hotel"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -16,19 +18,38 @@
         android:layout_marginStart="5dp"
         android:layout_centerVertical="true"
         android:orientation="vertical">
+
         <TextView
             android:id="@+id/name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="15sp"
+            android:layout_marginLeft="20px"
             android:layout_marginTop="20dp"
-            android:textStyle="bold"/>
-        <TextView
-            android:id="@+id/address"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:fontFamily="@font/ubuntu_bold"
             android:textSize="15sp"
-            android:textStyle="bold"/>
+            android:textStyle="bold"
+            android:textColor="@color/black"/>
+        <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+            android:layout_marginLeft="20px">
+
+            <TextView
+                android:layout_width="45px"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ic_baseline_location_on_24"></TextView>
+
+            <TextView
+                android:id="@+id/address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20px"
+                android:fontFamily="@font/ubuntu"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:textColor="#134563"/>
+        </LinearLayout>
     </LinearLayout>
 
 </RelativeLayout>

@@ -15,6 +15,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.example.nt118_nhom2_trips.CreateNewTrip.CreateNewTrip;
+import com.example.nt118_nhom2_trips.CreateNewTrip.InfoTripS;
 import com.example.nt118_nhom2_trips.MainActivity;
 import com.example.nt118_nhom2_trips.PlaceName.PlaceName;
 import com.example.nt118_nhom2_trips.PlaceName.PlaceNameAdapater;
@@ -35,6 +37,7 @@ public class Activity_Hotel extends AppCompatActivity implements OnHotelItemClic
     private DatabaseReference mDatabaseHotels;
     private FirebaseAuth mAuth;
     private List<Hotel> mListHotels;
+    private Intent intent;
 
     SearchView searchHotel;
 
@@ -104,10 +107,8 @@ public class Activity_Hotel extends AppCompatActivity implements OnHotelItemClic
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot ds:snapshot.getChildren()) {
-                    Toast.makeText(Activity_Hotel.this, "hello", Toast.LENGTH_SHORT).show();
                     Hotel hotel = ds.getValue(Hotel.class);
                     {
-                        Toast.makeText(Activity_Hotel.this, hotel.getImageUrl(), Toast.LENGTH_SHORT).show();
                         mListHotels.add(hotel);
                     }
                 }
@@ -119,22 +120,15 @@ public class Activity_Hotel extends AppCompatActivity implements OnHotelItemClic
 
             }
         });
-        /*List<Hotel> list = new ArrayList<>();
-        list.add(new Hotel(R.drawable.catba_haiphong, "Cát Bà, Hải Phòng", "5"));
-        list.add(new Hotel(R.drawable.dalat_lamdong, "Đà Lạt, Lâm Đồng", "5"));
-        list.add(new Hotel(R.drawable.cauvang, "Cầu Vàng, Đà Nẵng", "5"));
-        list.add(new Hotel(R.drawable.daocoto_quangninh, "Cô Tô, Quảng Ninh", "5"));
-        LinearLayoutManager verticallinearLayoutManager = new LinearLayoutManager(
-                this, RecyclerView.VERTICAL, false);
-
-        rcvCategoryHotel.setLayoutManager(verticallinearLayoutManager);
-        hotelAdapter = new HotelAdapter(list);
-
-        rcvCategoryHotel.setAdapter(hotelAdapter);*/
     }
 
     @Override
-    public void onHotelItemClick(Hotel hotel) {
-
+    public void onHotelItemClick(Hotel mhotel) {
+        intent = new Intent(this, InfoHotel.class);
+        Bundle bundle = new Bundle();
+        bundle.putString("hotel_id", mhotel.getId_hotel());
+        intent.putExtras(bundle);
+        startActivity(intent);
+        finish();
     }
 }
