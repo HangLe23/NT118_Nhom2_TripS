@@ -2,6 +2,7 @@ package com.example.nt118_nhom2_trips;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -22,14 +23,9 @@ public class ForgotPass extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.forgot_pass);
-       // email = (EditText) findViewById(R.id.et_Email);
-       // next = (Button) findViewById(R.id.btn_Enter);
-        /*next.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                onclickSendPassResetEmail();
-            }
-        });*/
+        email = (EditText) findViewById(R.id.et_Email);
+        next = (Button) findViewById(R.id.btn_Enter);
+
     }
 
     /*private void onclickSendPassResetEmail() {

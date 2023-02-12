@@ -1,9 +1,9 @@
 package com.example.nt118_nhom2_trips.user;
 
 public class User {
-    private  String email;
-    private  String Password;
-    private  String fullname, gender, phone;
+    private    String email;
+    private    String Password;
+    private    String fullname, gender, phone;
 
     public User() {
     }

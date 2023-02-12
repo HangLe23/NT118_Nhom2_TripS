@@ -23,6 +23,7 @@
         <entry key="..\:/NT118_PTUDDD/NT118_Nhom2_TripS/app/src/main/res/drawable/ic_baseline_train.xml" value="0.165" />
         <entry key="..\:/NT118_PTUDDD/NT118_Nhom2_TripS/app/src/main/res/drawable/ic_directions_transit.xml" value="0.165" />
         <entry key="..\:/NT118_PTUDDD/NT118_Nhom2_TripS/app/src/main/res/drawable/ic_female.xml" value="0.1615" />
+        <entry key="..\:/NT118_PTUDDD/NT118_Nhom2_TripS/app/src/main/res/drawable/ic_hidepass.xml" value="0.1" />
         <entry key="..\:/NT118_PTUDDD/NT118_Nhom2_TripS/app/src/main/res/drawable/ic_hotel.xml" value="0.165" />
         <entry key="..\:/NT118_PTUDDD/NT118_Nhom2_TripS/app/src/main/res/drawable/ic_launcher_background.xml" value="0.165" />
         <entry key="..\:/NT118_PTUDDD/NT118_Nhom2_TripS/app/src/main/res/drawable/ic_menu_camera.xml" value="0.1695" />
@@ -64,7 +65,7 @@
         <entry key="..\:/NT118_PTUDDD/NT118_Nhom2_TripS/app/src/main/res/layout/reset_pass.xml" value="0.1" />
         <entry key="..\:/NT118_PTUDDD/NT118_Nhom2_TripS/app/src/main/res/layout/search_hotel.xml" value="0.2" />
         <entry key="..\:/NT118_PTUDDD/NT118_Nhom2_TripS/app/src/main/res/layout/search_tour.xml" value="0.20427350427350427" />
-        <entry key="..\:/NT118_PTUDDD/NT118_Nhom2_TripS/app/src/main/res/layout/sign_in.xml" value="0.14074074074074075" />
+        <entry key="..\:/NT118_PTUDDD/NT118_Nhom2_TripS/app/src/main/res/layout/sign_in.xml" value="0.264" />
         <entry key="..\:/NT118_PTUDDD/NT118_Nhom2_TripS/app/src/main/res/layout/sign_up.xml" value="0.2" />
         <entry key="..\:/NT118_PTUDDD/NT118_Nhom2_TripS/app/src/main/res/layout/update_profile.xml" value="0.24895833333333334" />
         <entry key="..\:/NT118_PTUDDD/NT118_Nhom2_TripS/app/src/main/res/layout/verify.xml" value="0.1" />
