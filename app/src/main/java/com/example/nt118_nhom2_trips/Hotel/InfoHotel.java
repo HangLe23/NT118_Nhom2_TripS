@@ -47,10 +47,10 @@ public class InfoHotel extends AppCompatActivity {
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
         if (bundle!=null) {
-            HotelID = bundle.getString("hotel_id", "1");
+            HotelID = bundle.getString("hotel_id", "");
         }
 
-        Query query = mDatabaseHotels.orderByChild("id_hotel").equalTo("1");
+        Query query = mDatabaseHotels.orderByChild("id_hotel").equalTo(HotelID);
         query.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -66,7 +66,6 @@ public class InfoHotel extends AppCompatActivity {
                         break;
                     }
                 }
-                //  tv_address.setText(mListHotel.get(0).getAddress() + "");
             }
 
             @Override

@@ -1,6 +1,104 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="150dp"
+    android:layout_marginEnd="5dp"
+    android:padding="10dp"
+    android:background="@drawable/border_hotel">
+    <ImageView
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:id="@+id/img_room"
+        android:scaleType="centerCrop"
+        android:background="@drawable/border_hotel"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_toEndOf="@id/img_room"
+        android:layout_marginStart="5dp"
+        android:layout_centerVertical="true"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/tv_name_room"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20px"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/ubuntu_bold"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="20px">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                android:layout_width="50px"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ic_baseline_person_24"></TextView>
+
+            <TextView
+                android:id="@+id/tv_guest"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15px"
+                android:fontFamily="@font/ubuntu"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:textColor="#134563"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="50px"
+            android:layout_marginLeft="20px">
+            <TextView
+                android:layout_width="40px"
+                android:layout_height="40px"
+                android:layout_marginLeft="10px"
+                android:layout_marginTop="8px"
+                android:background="@drawable/ic_baseline_attach_money_24"
+                android:textAlignment="viewEnd"></TextView>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/ubuntu"
+                android:textSize="12sp"
+                android:textStyle=""
+                android:text="Đã bao gồm thuế và phí"
+                android:textColor="@color/black"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10px"
+            android:layout_marginLeft="20px">
+
+            <TextView
+                android:id="@+id/tv_price"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/ubuntu"
+                android:text="270000đ"
+                android:textColor="#D81414"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/tv_sale"
+                android:layout_width="150px"
+                android:layout_height="50px"
+                android:layout_weight="1"
+                android:layout_marginTop="5px"
+                android:background="@drawable/ic_baseline_money_24"
+                android:textAlignment="viewEnd"
+                tools:ignore="InvalidId"></TextView>
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>
