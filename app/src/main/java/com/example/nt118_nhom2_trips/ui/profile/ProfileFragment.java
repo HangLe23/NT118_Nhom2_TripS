@@ -15,6 +15,7 @@ import com.example.nt118_nhom2_trips.R;
 import com.example.nt118_nhom2_trips.UpdateProfile;
 import com.example.nt118_nhom2_trips.user.User;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -31,31 +32,49 @@ public class ProfileFragment extends Fragment {
     private Button btnEdit;
     private FirebaseDatabase firebaseDatabase;
     private DatabaseReference databaseReference;
+    private FirebaseAuth firebaseAuth;
+    private String Email;
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_profile, container, false);
         findViewByIds();
-        initListener();
+        firebaseAuth = FirebaseAuth.getInstance();
+        FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
+        if (firebaseUser == null){
 
-        firebaseDatabase = FirebaseDatabase.getInstance();
-        databaseReference = firebaseDatabase.getReference("User");
-        databaseReference.addValueEventListener(new ValueEventListener() {
+        } else {
+            showUserProfile(firebaseUser);
+        }
+        btnEdit.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                // This method is called once with the initial value and again
-                // whenever data at this location is updated.
-                User user = dataSnapshot.getValue(User.class);
-                fullname.setText(user.getFullname());
-                email.setText(user.getEmail());
-                gender.setText(user.getGender());
-                phone.setText(user.getPhone());
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), UpdateProfile.class);
+                startActivity(intent);
+            }
+        });
+        return view;
+    }
+
+    private void showUserProfile(FirebaseUser firebaseUser) {
+        String id = firebaseUser.getUid();
+        databaseReference = FirebaseDatabase.getInstance().getReference("User");
+        databaseReference.child(id).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                User user = snapshot.getValue(User.class);
+                if(user != null){
+                    fullname.setText(user.getFullname());
+                    Email = firebaseUser.getEmail();
+                    email.setText(Email);
+                    gender.setText(user.getGender());
+                    phone.setText(user.getPhone());
+                }
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                // Failed to read value
+
             }
         });
-        return view;
     }
 
     private void findViewByIds(){
