@@ -72,6 +72,8 @@ public class SignIn extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //onClickForgetPass();
+                Intent intent = new Intent(SignIn.this, ForgotPass.class);
+                startActivity(intent);
             }
         });
         showPass.setImageResource(R.drawable.ic_baseline_remove_red_eye_24);

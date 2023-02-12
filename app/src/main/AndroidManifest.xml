@@ -49,6 +49,8 @@
         <activity android:name=".SignIn" />
         <activity android:name=".SignUp" />
         <activity android:name=".Hotel.SearchHotel" />
+        <activity android:name=".UpdateProfile"/>
+        <activity android:name=".ForgotPass"/>
         <activity
             android:name=".MainActivity"
             android:exported="true"
