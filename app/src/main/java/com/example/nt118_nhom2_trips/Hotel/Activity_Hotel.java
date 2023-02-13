@@ -46,9 +46,39 @@ public class Activity_Hotel extends AppCompatActivity implements OnHotelItemClic
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hotel);
 
-        findViewByIds();
+        rcvCategory = findViewById(R.id.rcv_category);
+        backhome = (Button) findViewById(R.id.btn_backhome);
+        rcvCategoryHotel = findViewById(R.id.rcv_catoryhotel);
+        searchHotel = findViewById(R.id.search_hotel);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, RecyclerView.VERTICAL, false);
+        mListHotels = new ArrayList<Hotel>();
+
+        mAuth = FirebaseAuth.getInstance();
+        hotelAdapter = new HotelAdapter (mListHotels, this);
+        mDatabaseHotels = FirebaseDatabase.getInstance().getReference().child("Hotels");
+
+        rcvCategoryHotel.setLayoutManager(linearLayoutManager);
+        hotelAdapter.setData(mListHotels);
+        rcvCategoryHotel.setAdapter(hotelAdapter);
+
         getList();
-        getListHotel();
+
+        Query query = mDatabaseHotels;
+        query.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot ds:snapshot.getChildren()) {
+                    Hotel hotel = ds.getValue(Hotel.class);
+                    mListHotels.add(hotel);
+                }
+                hotelAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
         backhome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -65,22 +95,7 @@ public class Activity_Hotel extends AppCompatActivity implements OnHotelItemClic
         });
 
     }
-    private void findViewByIds(){
-        rcvCategory = findViewById(R.id.rcv_category);
-        backhome = (Button) findViewById(R.id.btn_backhome);
-        rcvCategoryHotel = findViewById(R.id.rcv_catoryhotel);
-        searchHotel = findViewById(R.id.search_hotel);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, RecyclerView.VERTICAL, false);
-        mListHotels = new ArrayList<Hotel>();
 
-        mAuth = FirebaseAuth.getInstance();
-        hotelAdapter = new HotelAdapter (mListHotels, this);
-        mDatabaseHotels = FirebaseDatabase.getInstance().getReference().child("Hotels");
-
-        rcvCategoryHotel.setLayoutManager(linearLayoutManager);
-        hotelAdapter.setData(mListHotels);
-        rcvCategoryHotel.setAdapter(hotelAdapter);
-    }
     private void getList(){
         List<PlaceName> list = new ArrayList<>();
         list.add(new PlaceName(R.drawable.catba_haiphong, "Cát Bà, Hải Phòng"));
@@ -100,26 +115,6 @@ public class Activity_Hotel extends AppCompatActivity implements OnHotelItemClic
         placeNameAdapater = new PlaceNameAdapater(list);
 
         rcvCategory.setAdapter(placeNameAdapater);
-    }
-    private void getListHotel(){
-        Query query = mDatabaseHotels;
-        query.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for (DataSnapshot ds:snapshot.getChildren()) {
-                    Hotel hotel = ds.getValue(Hotel.class);
-                    {
-                        mListHotels.add(hotel);
-                    }
-                }
-                hotelAdapter.notifyDataSetChanged();
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
     }
 
     @Override

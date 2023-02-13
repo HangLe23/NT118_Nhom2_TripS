@@ -53,6 +53,7 @@ public class HotelAdapter extends RecyclerView.Adapter<HotelAdapter.HotelViewHol
         private ImageView imghotel;
         private TextView name;
         private TextView address;
+        private TextView phone;
         private Hotel hotel;
 
         public HotelViewHolder(@NonNull View itemView) {

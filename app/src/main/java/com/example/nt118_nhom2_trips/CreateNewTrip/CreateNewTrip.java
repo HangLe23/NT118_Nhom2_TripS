@@ -60,7 +60,6 @@ public class CreateNewTrip extends AppCompatActivity implements DatePickerDialog
             public void onClick(View view) {
                 DialogFragment datePicker = new DatePickerFragment();
                 datePicker.show(getSupportFragmentManager(), "date picker");
-
             }
         });
 
@@ -109,8 +108,6 @@ public class CreateNewTrip extends AppCompatActivity implements DatePickerDialog
 
     public void SaveInfoTrip() {
         String user_id = mAuth.getCurrentUser().getUid();
-        //mDatabaseUser = mDatabase.child(user_id);
-        //id = mDatabaseTrip.child("Trips").push().getKey();
         mDatabaseTrip = FirebaseDatabase.getInstance().getReference().child("Trips");
         id = mDatabaseTrip.push().getKey();
         String[] date = et_time.getText().toString().split("\\s\\s");
@@ -122,7 +119,6 @@ public class CreateNewTrip extends AppCompatActivity implements DatePickerDialog
                 intent = new Intent(CreateNewTrip.this, InfoTripS.class);
                 Bundle bundle = new Bundle();
                 bundle.putString("trip_id", id);
-                //bundle.putString("user_id", user_id);
                 intent.putExtras(bundle);
                 startActivity(intent);
                 finish();
