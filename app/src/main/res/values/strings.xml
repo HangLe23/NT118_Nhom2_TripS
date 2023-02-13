@@ -20,4 +20,8 @@
         <item>Phú Quốc</item>
         <item>Vũng Tàu</item>
     </string-array>
+    <string-array name="Gender">
+        <item>Nam</item>
+        <item>Nữ</item>
+    </string-array>
 </resources>

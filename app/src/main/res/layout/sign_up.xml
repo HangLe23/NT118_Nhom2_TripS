@@ -66,6 +66,7 @@
         app:layout_constraintTop_toBottomOf="@id/et_Password"
         android:layout_marginRight="40dp"
         android:layout_marginLeft="40dp"
+        android:password="true"
         android:hint="Xác nhận mật khẩu"
         android:textSize="20sp"
         android:textColor="@color/white"
@@ -75,7 +76,7 @@
         android:id="@+id/btn_show_confirm"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:background="@drawable/ic_baseline_remove_red_eye_24"
+        android:background="#335058"
         app:layout_constraintTop_toBottomOf="@id/et_Password"
         android:layout_marginTop="20dp"
         app:layout_constraintRight_toRightOf="parent"
@@ -88,6 +89,7 @@
         app:layout_constraintTop_toBottomOf="@id/et_Mail"
         android:layout_marginRight="40dp"
         android:layout_marginLeft="40dp"
+        android:password="true"
         android:hint="Mật khẩu"
         android:textSize="20sp"
         android:textColor="@color/white"
@@ -97,7 +99,7 @@
         android:id="@+id/btn_showpass"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:background="@drawable/ic_baseline_remove_red_eye_24"
+        android:background="#335058"
         app:layout_constraintTop_toBottomOf="@id/et_Mail"
         android:layout_marginTop="20dp"
         app:layout_constraintRight_toRightOf="parent"
@@ -126,15 +128,15 @@
         android:textSize="20sp"
         android:textColor="@color/white"
         android:textColorHint="@color/white"/>
-    <ImageButton
+    <Spinner
         android:id="@+id/btn_choosegender"
-        android:layout_width="50dp"
+        android:layout_width="32dp"
         android:layout_height="50dp"
-        android:background="@drawable/ic_baseline_arrow_drop_down_24"
         app:layout_constraintTop_toBottomOf="@id/et_Fullname"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginRight="25dp"/>
+        android:layout_marginRight="30dp"
+        android:backgroundTint="#FFEB3B"/>
     <EditText
         android:id="@+id/et_Phone"
         android:layout_width="match_parent"

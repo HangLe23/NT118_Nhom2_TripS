@@ -21,85 +21,172 @@
 
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/et_fullname"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:id="@+id/fulname"
         app:layout_constraintTop_toBottomOf="@id/border"
-        android:hint="Full Name"
-        android:textSize="20sp"
-        android:textColor="@color/white"
-        android:textColorHint="@color/white"
-        android:layout_marginTop="50dp"
-        android:layout_marginRight="50dp"
-        android:layout_marginLeft="50dp"/>
+        android:padding="15dp"
+        android:layout_margin="15dp"
+        android:layout_marginTop="50dp">
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:background="@drawable/ic_profile"/>
 
-    <TextView
-        android:id="@+id/et_birthday"
+        <TextView
+            android:id="@+id/et_fullname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Full Name"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:textSize="20sp"
+            android:layout_marginLeft="35dp" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@+id/et_fullname"
+            android:layout_marginTop="10dp"
+            android:background="@android:color/darker_gray"/>
+
+    </RelativeLayout>
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/et_fullname"
-        android:hint="Birthday"
-        android:textSize="20sp"
-        android:textColor="@color/white"
-        android:textColorHint="@color/white"
-        android:layout_marginTop="50dp"
-        android:layout_marginRight="50dp"
-        android:layout_marginLeft="50dp" />
+        android:id="@+id/birthday"
+        app:layout_constraintTop_toBottomOf="@id/fulname"
+        android:padding="15dp"
+        android:layout_margin="15dp"
+        android:layout_marginTop="20dp">
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:background="@drawable/ic_birthday"/>
 
-    <TextView
-        android:id="@+id/et_gender"
+        <TextView
+            android:id="@+id/et_birthday"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Birthday"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:textSize="20sp"
+            android:layout_marginLeft="35dp" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@+id/et_birthday"
+            android:layout_marginTop="10dp"
+            android:background="@android:color/darker_gray"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/et_birthday"
-        android:hint="Gender"
-        android:textSize="20sp"
-        android:textColor="@color/white"
-        android:textColorHint="@color/white"
-        android:layout_marginTop="50dp"
-        android:layout_marginRight="50dp"
-        android:layout_marginLeft="50dp" />
+        android:id="@+id/gender"
+        app:layout_constraintTop_toBottomOf="@id/birthday"
+        android:padding="15dp"
+        android:layout_margin="15dp"
+        android:layout_marginTop="20dp">
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginLeft="5dp"
+            android:background="@drawable/ic_gender"/>
 
-    <TextView
-        android:id="@+id/et_email"
+        <TextView
+            android:id="@+id/et_gender"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Gender"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:textSize="20sp"
+            android:layout_marginLeft="35dp" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@+id/et_gender"
+            android:layout_marginTop="10dp"
+            android:background="@android:color/darker_gray"/>
+
+    </RelativeLayout>
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/et_gender"
-        android:hint="Email"
-        android:textSize="20sp"
-        android:textColor="@color/white"
-        android:textColorHint="@color/white"
-        android:layout_marginTop="50dp"
-        android:layout_marginRight="50dp"
-        android:layout_marginLeft="50dp" />
+        android:id="@+id/email"
+        app:layout_constraintTop_toBottomOf="@id/gender"
+        android:padding="15dp"
+        android:layout_margin="15dp"
+        android:layout_marginTop="20dp">
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginLeft="5dp"
+            android:background="@drawable/ic_mail"/>
 
-    <TextView
-        android:id="@+id/et_phone"
+        <TextView
+            android:id="@+id/et_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="35dp"
+            android:hint="Email"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:textSize="20sp" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@+id/et_email"
+            android:layout_marginTop="10dp"
+            android:background="@android:color/darker_gray"/>
+
+    </RelativeLayout>
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/et_email"
-        android:hint="Phone number"
-        android:textSize="20sp"
-        android:textColor="@color/white"
-        android:textColorHint="@color/white"
-        android:layout_marginTop="50dp"
-        android:layout_marginRight="50dp"
-        android:layout_marginLeft="50dp" />
+        android:id="@+id/phone"
+        app:layout_constraintTop_toBottomOf="@id/email"
+        android:padding="15dp"
+        android:layout_margin="15dp"
+        android:layout_marginTop="20dp">
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginLeft="5dp"
+            android:background="@drawable/ic_phone"/>
 
+        <TextView
+            android:id="@+id/et_phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="35dp"
+            android:hint="Phone"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:textSize="20sp" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@+id/et_phone"
+            android:layout_marginTop="10dp"
+            android:background="@android:color/darker_gray"/>
+
+    </RelativeLayout>
     <Button
         android:id="@+id/btn_edit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/et_phone"
+        app:layout_constraintTop_toBottomOf="@id/phone"
         android:text="Chỉnh sửa thông tin"
         android:textSize="20sp"
         android:textColor="#335058"
         android:textColorHint="@color/white"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="20dp"
         android:layout_marginRight="50dp"
         android:layout_marginLeft="50dp"
         android:background="#DEC854"
         android:textStyle="bold"/>
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>
