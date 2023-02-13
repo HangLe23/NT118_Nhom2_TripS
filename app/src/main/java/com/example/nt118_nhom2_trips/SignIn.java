@@ -71,7 +71,6 @@ public class SignIn extends AppCompatActivity {
         tv_ForgetPass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //onClickForgetPass();
                 Intent intent = new Intent(SignIn.this, ForgotPass.class);
                 startActivity(intent);
             }
@@ -91,33 +90,15 @@ public class SignIn extends AppCompatActivity {
         });
     }
 
-    private void onClickForgetPass() {
-        progressDialog.show();
-        FirebaseAuth auth = FirebaseAuth.getInstance();
-        String emailAddress= Email.getText().toString();
-        auth.sendPasswordResetEmail(emailAddress)
-                .addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if (task.isSuccessful()) {
-                            progressDialog.dismiss();
-
-                            Toast.makeText(SignIn.this, "Email sent", Toast.LENGTH_SHORT).show();
-
-                        }
-                    }
-                });
-    }
-
     private void onclickSignIn() {
         String email = Email.getText().toString().trim();
         String pass = Pass.getText().toString().trim();
-        //progressDialog.show();
+        progressDialog.show();
         mAuth.signInWithEmailAndPassword(email, pass)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                       // progressDialog.dismiss();
+                        progressDialog.dismiss();
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
                             Intent intent = new Intent(SignIn.this, MainActivity.class);

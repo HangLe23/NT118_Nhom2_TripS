@@ -33,7 +33,7 @@ public class ProfileFragment extends Fragment {
     private FirebaseDatabase firebaseDatabase;
     private DatabaseReference databaseReference;
     private FirebaseAuth firebaseAuth;
-    private String Email;
+    private String Email, Fullname;
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_profile, container, false);
         findViewByIds();
@@ -62,7 +62,8 @@ public class ProfileFragment extends Fragment {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 User user = snapshot.getValue(User.class);
                 if(user != null){
-                    fullname.setText(user.getFullname());
+                    Fullname = firebaseUser.getDisplayName();
+                    fullname.setText(Fullname);
                     Email = firebaseUser.getEmail();
                     email.setText(Email);
                     gender.setText(user.getGender());
