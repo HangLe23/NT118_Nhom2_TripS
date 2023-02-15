@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="150dp"
+    android:padding="10dp"
+    android:background="@drawable/radius_trips"
+    android:layout_marginBottom="10dp"
+    android:orientation="horizontal">
+        <View
+            android:layout_width="3dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="20px"
+            android:layout_marginVertical="50px"
+            android:background="@drawable/radius_view" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+                <TextView
+                    android:id="@+id/name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="60px"
+                    android:layout_marginTop="20dp"
+                    android:fontFamily="@font/ubuntu_bold"
+                    android:textSize="25sp"
+                    android:text="Đà Lạt - 2023"
+                    android:textStyle="bold"
+                    android:textColor="#DEC854"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="55px"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="60px"
+                            android:layout_marginTop="20px"
+                            android:background="@drawable/ic_baseline_location_on_24"></TextView>
+                        <TextView
+                            android:id="@+id/place"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="25px"
+                            android:fontFamily="@font/inter"
+                            android:text="Đà Lạt"
+                            android:textColor="#F2F2F2"
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
+                </LinearLayout>
+                <TextView
+                    android:id="@+id/day"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="25px"
+                    android:layout_marginLeft="60px"
+                    android:fontFamily="@font/inter"
+                    android:text="23-3-2002 "
+                    android:textColor="@color/white"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+        </LinearLayout>
+
+</LinearLayout>

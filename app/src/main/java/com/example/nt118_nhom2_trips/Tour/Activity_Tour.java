@@ -1,4 +1,4 @@
-package com.example.nt118_nhom2_trips;
+package com.example.nt118_nhom2_trips.Tour;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,8 +12,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.example.nt118_nhom2_trips.MainActivity;
 import com.example.nt118_nhom2_trips.PlaceName.PlaceName;
 import com.example.nt118_nhom2_trips.PlaceName.PlaceNameAdapater;
+import com.example.nt118_nhom2_trips.R;
 
 public class Activity_Tour extends AppCompatActivity {
     private RecyclerView rcvCategory;
