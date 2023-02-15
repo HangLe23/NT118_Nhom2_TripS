@@ -8,6 +8,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.example.nt118_nhom2_trips.CreateNewTrip.CreateNewTrip;
+import com.example.nt118_nhom2_trips.CreateNewTrip.InfoTripS;
 import com.example.nt118_nhom2_trips.CreateNewTrip.Trips;
 import com.example.nt118_nhom2_trips.Hotel.Hotel;
 import com.example.nt118_nhom2_trips.Hotel.HotelAdapter;
@@ -68,6 +70,11 @@ public class YourTrips extends AppCompatActivity implements OnTripItemClickListe
 
     @Override
     public void onTripItemClick(Trips trips) {
-
+        intent = new Intent(YourTrips.this, InfoTripS.class);
+        Bundle bundle = new Bundle();
+        bundle.putString("trip_id", trips.getTrip_id());
+        intent.putExtras(bundle);
+        startActivity(intent);
+        finish();
     }
 }

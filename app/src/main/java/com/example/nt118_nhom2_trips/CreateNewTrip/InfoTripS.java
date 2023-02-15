@@ -40,7 +40,7 @@ import java.util.concurrent.TimeUnit;
 
 public class InfoTripS extends AppCompatActivity implements OnItemClickListener{
     String tripId, userId, id;
-    DatabaseReference mDatabase, mDatabaseUser, mDatabaseTrip, mDatabaseActivity;
+    DatabaseReference mDatabaseTrip, mDatabaseActivity;
     FirebaseAuth mAuth;
     Trips trip;
     int numberOfDays, hour, minute, day = 1;
@@ -85,6 +85,7 @@ public class InfoTripS extends AppCompatActivity implements OnItemClickListener{
         }
 
         mAuth = FirebaseAuth.getInstance();
+        userId = mAuth.getCurrentUser().getUid();
         mDatabaseTrip = FirebaseDatabase.getInstance().getReference().child("Trips");
         mDatabaseActivity = FirebaseDatabase.getInstance().getReference().child("Activity");
         mDatabaseTrip.child(tripId).addValueEventListener(new ValueEventListener() {
@@ -106,7 +107,7 @@ public class InfoTripS extends AppCompatActivity implements OnItemClickListener{
             public void onCancelled(@NonNull DatabaseError error) {
             }
         });
-
+        ChangeDay();
         Btn_Open_View.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -196,7 +197,6 @@ public class InfoTripS extends AppCompatActivity implements OnItemClickListener{
     }
 
     public void Save_Activity() {
-        userId = mAuth.getCurrentUser().getUid();
         id = mDatabaseActivity.push().getKey();
         activity = new Activity(id, tripId, userId, day + "", time_text.getText().toString(), name_text.getText().toString(), detail_text.getText().toString());
         mDatabaseActivity.child(id).setValue(activity);

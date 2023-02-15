@@ -38,7 +38,6 @@ public class Activity_Hotel extends AppCompatActivity implements OnHotelItemClic
     private FirebaseAuth mAuth;
     private List<Hotel> mListHotels;
     private Intent intent;
-
     SearchView searchHotel;
 
     @Override

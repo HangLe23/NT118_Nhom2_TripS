@@ -61,6 +61,12 @@ public class TripAdapter extends RecyclerView.Adapter<TripAdapter.TripViewHolder
 
         public TripViewHolder(@NonNull View itemView) {
             super(itemView);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    listener.onTripItemClick(trip);
+                }
+            });
             name = itemView.findViewById(R.id.name);
             place = itemView.findViewById(R.id.place);
             day = itemView.findViewById(R.id.day);
