@@ -106,20 +106,27 @@ public class SignUp extends AppCompatActivity implements AdapterView.OnItemSelec
         String email = Email.getText().toString();
         String pass = Pass.getText().toString();
         String confirmPass = ConfirmPass.getText().toString();
-        /*if(TextUtils.isEmpty(email) || TextUtils.isEmpty(pass) || TextUtils.isEmpty(confirmPass)){
-            Toast.makeText(getApplicationContext(), "Enter email and password", Toast.LENGTH_SHORT).show();
+        if(TextUtils.isEmpty(email)){
+            Toast.makeText(getApplicationContext(), "Vui lòng không để trống email!", Toast.LENGTH_SHORT).show();
             return;
-        }*/
+        }
+        else if(TextUtils.isEmpty(pass) || TextUtils.isEmpty(confirmPass)){
+            Toast.makeText(getApplicationContext(), "Vui lòng không để trống mật khẩu!", Toast.LENGTH_SHORT).show();
+            return;
+        } else if(pass != confirmPass){
+            Toast.makeText(getApplicationContext(), "Mật khẩu không trùng khớp!", Toast.LENGTH_SHORT).show();
+            return;
+        }
         String fullName = FullName.getText().toString();
         String gender = Gender.getText().toString();
         String phone = PhoneNumber.getText().toString();
 
-        //progressDialog.show();
+        progressDialog.show();
         mAuth.createUserWithEmailAndPassword(email, pass)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        //progressDialog.dismiss();
+                        progressDialog.dismiss();
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
                             FirebaseUser firebaseUser = mAuth.getCurrentUser();

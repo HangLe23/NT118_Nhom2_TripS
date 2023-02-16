@@ -2,6 +2,7 @@ package com.example.nt118_nhom2_trips.ui.changepassword;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,6 +43,13 @@ public class ChangPasswordFragment extends Fragment {
 
     private void onClickChangePass() {
         String NewPass = newPass.getText().toString().trim();
+        if(TextUtils.isEmpty(NewPass) || TextUtils.isEmpty(oldPass.getText().toString()) || TextUtils.isEmpty(confirmPass.getText().toString())){
+            Toast.makeText(getActivity(), "Vui lòng không để trống mật khẩu!", Toast.LENGTH_SHORT).show();
+            return;
+        } else if(confirmPass.getText().toString() != NewPass){
+            Toast.makeText(getActivity(), "Mật khẩu không trùng khớp!", Toast.LENGTH_SHORT).show();
+            return;
+        }
         progressDialog.show();
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         user.updatePassword(NewPass)

@@ -12,7 +12,6 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import com.example.nt118_nhom2_trips.R;
-import com.example.nt118_nhom2_trips.UpdateProfile;
 import com.example.nt118_nhom2_trips.user.User;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -66,6 +65,7 @@ public class ProfileFragment extends Fragment {
                     fullname.setText(Fullname);
                     Email = firebaseUser.getEmail();
                     email.setText(Email);
+                    birthday.setText(user.getBirthday());
                     gender.setText(user.getGender());
                     phone.setText(user.getPhone());
                 }
@@ -86,15 +86,5 @@ public class ProfileFragment extends Fragment {
         gender = view.findViewById(R.id.et_gender);
         phone = view.findViewById(R.id.et_phone);
         btnEdit = view.findViewById(R.id.btn_edit);
-    }
-
-    private void initListener(){
-        btnEdit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), UpdateProfile.class);
-                startActivity(intent);
-            }
-        });
     }
 }

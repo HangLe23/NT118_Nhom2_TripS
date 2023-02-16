@@ -24,19 +24,17 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
-
 
 import com.bumptech.glide.Glide;
 import com.example.nt118_nhom2_trips.ui.changepassword.ChangPasswordFragment;
 import com.example.nt118_nhom2_trips.ui.home.HomeFragment;
 import com.example.nt118_nhom2_trips.ui.profile.ProfileFragment;
+import com.example.nt118_nhom2_trips.ui.profile.UpdateProfile;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 import java.io.IOException;
-
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
@@ -50,8 +48,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private static final int Fragment_changepass = 2;
     private int numFragment = Fragment_home;
     public static final int MY_REQUEST_CODE = 10;
-    final private ProfileFragment profileFragment = new ProfileFragment();
-    /*final private ActivityResultLauncher<Intent> activityResultLauncher = registerForActivityResult(
+    /*final private UpdateProfile updateProfile = new UpdateProfile();
+    final private ActivityResultLauncher<Intent> activityResultLauncher = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
                 @Override
                 public void onActivityResult(ActivityResult result) {
@@ -61,10 +59,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                             return;
                         }
                         Uri uri = intent.getData();
-                        profileFragment.setmUri(uri);
+                        updateProfile.setUri(uri);
                         try {
                             Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
-                            profileFragment.setBitmapImageView(bitmap);
+                            updateProfile.setBitmapImageView(bitmap);
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
