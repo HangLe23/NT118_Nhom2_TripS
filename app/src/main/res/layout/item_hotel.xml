@@ -36,7 +36,7 @@
             android:layout_marginLeft="20px">
 
             <TextView
-                android:layout_width="45px"
+                android:layout_width="55px"
                 android:layout_height="wrap_content"
                 android:background="@drawable/ic_baseline_location_on_24"></TextView>
 

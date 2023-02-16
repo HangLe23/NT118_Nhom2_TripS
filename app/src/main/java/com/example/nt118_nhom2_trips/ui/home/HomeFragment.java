@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.nt118_nhom2_trips.Hotel.Activity_Hotel;
-import com.example.nt118_nhom2_trips.Activity_Tour;
+import com.example.nt118_nhom2_trips.Tour.Activity_Tour;
 import com.example.nt118_nhom2_trips.CreateNewTrip.CreateNewTrip;
 import com.example.nt118_nhom2_trips.R;
 
@@ -23,6 +23,7 @@ import java.util.List;
 
 import com.example.nt118_nhom2_trips.PlaceName.PlaceName;
 import com.example.nt118_nhom2_trips.PlaceName.PlaceNameAdapater;
+import com.example.nt118_nhom2_trips.YourTrips.YourTrips;
 
 
 public class HomeFragment extends Fragment {
@@ -85,6 +86,13 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), Activity_Tour.class);
+                startActivity(intent);
+            }
+        });
+        youTrip.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), YourTrips.class);
                 startActivity(intent);
             }
         });
