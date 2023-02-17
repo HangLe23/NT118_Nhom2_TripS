@@ -43,6 +43,8 @@ public class ChangPasswordFragment extends Fragment {
 
     private void onClickChangePass() {
         String NewPass = newPass.getText().toString().trim();
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        progressDialog.show();
         if(TextUtils.isEmpty(NewPass) || TextUtils.isEmpty(oldPass.getText().toString()) || TextUtils.isEmpty(confirmPass.getText().toString())){
             Toast.makeText(getActivity(), "Vui lòng không để trống mật khẩu!", Toast.LENGTH_SHORT).show();
             return;
@@ -50,20 +52,20 @@ public class ChangPasswordFragment extends Fragment {
             Toast.makeText(getActivity(), "Mật khẩu không trùng khớp!", Toast.LENGTH_SHORT).show();
             return;
         }
-        progressDialog.show();
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        user.updatePassword(NewPass)
-                .addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if (task.isSuccessful()) {
-                            Toast.makeText(getActivity(), "User password updated.", Toast.LENGTH_SHORT).show();
-                            progressDialog.dismiss();
-                        } else {
-                            //
+        else{
+            user.updatePassword(NewPass)
+                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if (task.isSuccessful()) {
+                                Toast.makeText(getActivity(), "User password updated.", Toast.LENGTH_SHORT).show();
+                                progressDialog.dismiss();
+                            } else {
+                                //
+                            }
                         }
-                    }
-                });
+                    });
+        }
     }
 
     private void findViewByIds(){

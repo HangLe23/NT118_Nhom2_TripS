@@ -106,6 +106,11 @@ public class SignUp extends AppCompatActivity implements AdapterView.OnItemSelec
         String email = Email.getText().toString();
         String pass = Pass.getText().toString();
         String confirmPass = ConfirmPass.getText().toString();
+        String fullName = FullName.getText().toString();
+        String gender = Gender.getText().toString();
+        String phone = PhoneNumber.getText().toString();
+
+        progressDialog.show();
         if(TextUtils.isEmpty(email)){
             Toast.makeText(getApplicationContext(), "Vui lòng không để trống email!", Toast.LENGTH_SHORT).show();
             return;
@@ -116,47 +121,43 @@ public class SignUp extends AppCompatActivity implements AdapterView.OnItemSelec
         } else if(pass != confirmPass){
             Toast.makeText(getApplicationContext(), "Mật khẩu không trùng khớp!", Toast.LENGTH_SHORT).show();
             return;
-        }
-        String fullName = FullName.getText().toString();
-        String gender = Gender.getText().toString();
-        String phone = PhoneNumber.getText().toString();
+        } else{
+            mAuth.createUserWithEmailAndPassword(email, pass)
+                    .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            progressDialog.dismiss();
+                            if (task.isSuccessful()) {
+                                // Sign in success, update UI with the signed-in user's information
+                                FirebaseUser firebaseUser = mAuth.getCurrentUser();
+                                UserProfileChangeRequest profileChangeRequest = new UserProfileChangeRequest.Builder()
+                                        .setDisplayName(fullName).build();
+                                firebaseUser.updateProfile(profileChangeRequest);
+                                user = new User("", gender, phone);
+                                databaseReference = FirebaseDatabase.getInstance().getReference("User");
+                                databaseReference.child(firebaseUser.getUid()).setValue(user).addOnCompleteListener(
+                                        new OnCompleteListener<Void>() {
+                                            @Override
+                                            public void onComplete(@NonNull Task<Void> task) {
+                                                if(task.isSuccessful()){
+                                                    Intent intent = new Intent(SignUp.this, SignIn.class);
+                                                    startActivity(intent);
+                                                    finish();
+                                                }else{
 
-        progressDialog.show();
-        mAuth.createUserWithEmailAndPassword(email, pass)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        progressDialog.dismiss();
-                        if (task.isSuccessful()) {
-                            // Sign in success, update UI with the signed-in user's information
-                            FirebaseUser firebaseUser = mAuth.getCurrentUser();
-                            UserProfileChangeRequest profileChangeRequest = new UserProfileChangeRequest.Builder()
-                                    .setDisplayName(fullName).build();
-                            firebaseUser.updateProfile(profileChangeRequest);
-                            user = new User("", gender, phone);
-                            databaseReference = FirebaseDatabase.getInstance().getReference("User");
-                            databaseReference.child(firebaseUser.getUid()).setValue(user).addOnCompleteListener(
-                                    new OnCompleteListener<Void>() {
-                                @Override
-                                public void onComplete(@NonNull Task<Void> task) {
-                                    if(task.isSuccessful()){
-                                        Intent intent = new Intent(SignUp.this, SignIn.class);
-                                        startActivity(intent);
-                                        finish();
-                                    }else{
+                                                }
+                                            }
+                                        });
+                            } else {
+                                // If sign in fails, display a message to the user.
 
-                                    }
-                                }
-                            });
-                        } else {
-                            // If sign in fails, display a message to the user.
+                                Toast.makeText(SignUp.this, "Authentication failed.",
+                                        Toast.LENGTH_SHORT).show();
 
-                            Toast.makeText(SignUp.this, "Authentication failed.",
-                                    Toast.LENGTH_SHORT).show();
-
+                            }
                         }
-                    }
-                });
+                    });
+        }
     }
 
     @Override
