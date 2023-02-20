@@ -104,8 +104,8 @@ public class SignUp extends AppCompatActivity implements AdapterView.OnItemSelec
 
     private void onClickSignUp() {
         String email = Email.getText().toString();
-        String pass = Pass.getText().toString();
-        String confirmPass = ConfirmPass.getText().toString();
+        String pass = Pass.getText().toString().trim();
+        String confirmPass = ConfirmPass.getText().toString().trim();
         String fullName = FullName.getText().toString();
         String gender = Gender.getText().toString();
         String phone = PhoneNumber.getText().toString();
@@ -118,7 +118,7 @@ public class SignUp extends AppCompatActivity implements AdapterView.OnItemSelec
         else if(TextUtils.isEmpty(pass) || TextUtils.isEmpty(confirmPass)){
             Toast.makeText(getApplicationContext(), "Vui lòng không để trống mật khẩu!", Toast.LENGTH_SHORT).show();
             return;
-        } else if(pass != confirmPass){
+        } else if(!pass.equals(confirmPass)){
             Toast.makeText(getApplicationContext(), "Mật khẩu không trùng khớp!", Toast.LENGTH_SHORT).show();
             return;
         } else{

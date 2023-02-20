@@ -48,7 +48,7 @@ public class ChangPasswordFragment extends Fragment {
         if(TextUtils.isEmpty(NewPass) || TextUtils.isEmpty(oldPass.getText().toString()) || TextUtils.isEmpty(confirmPass.getText().toString())){
             Toast.makeText(getActivity(), "Vui lòng không để trống mật khẩu!", Toast.LENGTH_SHORT).show();
             return;
-        } else if(confirmPass.getText().toString() != NewPass){
+        } else if(!NewPass.equals(confirmPass.getText().toString())){
             Toast.makeText(getActivity(), "Mật khẩu không trùng khớp!", Toast.LENGTH_SHORT).show();
             return;
         }
