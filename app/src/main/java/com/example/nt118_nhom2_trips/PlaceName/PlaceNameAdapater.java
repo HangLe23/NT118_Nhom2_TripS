@@ -52,13 +52,11 @@ public class PlaceNameAdapater extends RecyclerView.Adapter<PlaceNameAdapater.Pl
 
         public PlaceNameViewHolder(@NonNull View itemView) {
             super(itemView);
-
             imgPlaceName = itemView.findViewById(R.id.img_diadanh);
             tvTivle = itemView.findViewById(R.id.tv_title);
         }
         @Override
         public void onClick(View view){
-
         }
     }
 }
