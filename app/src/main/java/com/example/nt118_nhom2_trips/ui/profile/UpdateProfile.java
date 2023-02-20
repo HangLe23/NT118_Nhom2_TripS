@@ -116,6 +116,7 @@ public class UpdateProfile extends AppCompatActivity implements AdapterView.OnIt
     }*/
 
     private void updateProfile(FirebaseUser firebaseUser) {
+
         UpdateEmail(firebaseUser);
         UserProfileChangeRequest profileChangeRequest = new UserProfileChangeRequest.Builder()
                 .setDisplayName(fullname.getText().toString())/*.setPhotoUri(uri)*/.build();
