@@ -59,7 +59,6 @@ public class YourTrips extends AppCompatActivity implements OnTripItemClickListe
                 }
                 tripAdapter.notifyDataSetChanged();
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
