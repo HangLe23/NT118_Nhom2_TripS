@@ -110,7 +110,7 @@ public class SignUp extends AppCompatActivity implements AdapterView.OnItemSelec
         String gender = Gender.getText().toString();
         String phone = PhoneNumber.getText().toString();
 
-        progressDialog.show();
+        //progressDialog.show();
         if(TextUtils.isEmpty(email)){
             Toast.makeText(getApplicationContext(), "Vui lòng không để trống email!", Toast.LENGTH_SHORT).show();
             return;
@@ -126,14 +126,14 @@ public class SignUp extends AppCompatActivity implements AdapterView.OnItemSelec
                     .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
-                            progressDialog.dismiss();
+                            //progressDialog.dismiss();
                             if (task.isSuccessful()) {
                                 // Sign in success, update UI with the signed-in user's information
                                 FirebaseUser firebaseUser = mAuth.getCurrentUser();
-                                UserProfileChangeRequest profileChangeRequest = new UserProfileChangeRequest.Builder()
+                                /*UserProfileChangeRequest profileChangeRequest = new UserProfileChangeRequest.Builder()
                                         .setDisplayName(fullName).build();
-                                firebaseUser.updateProfile(profileChangeRequest);
-                                user = new User("", gender, phone);
+                                firebaseUser.updateProfile(profileChangeRequest);*/
+                                user = new User(fullName, "", gender, phone);
                                 databaseReference = FirebaseDatabase.getInstance().getReference("User");
                                 databaseReference.child(firebaseUser.getUid()).setValue(user).addOnCompleteListener(
                                         new OnCompleteListener<Void>() {
@@ -143,6 +143,7 @@ public class SignUp extends AppCompatActivity implements AdapterView.OnItemSelec
                                                     Intent intent = new Intent(SignUp.this, SignIn.class);
                                                     startActivity(intent);
                                                     finish();
+                                                    Toast.makeText(com.example.nt118_nhom2_trips.SignUp.this, "Hello", Toast.LENGTH_SHORT).show();
                                                 }else{
 
                                                 }
@@ -151,7 +152,7 @@ public class SignUp extends AppCompatActivity implements AdapterView.OnItemSelec
                             } else {
                                 // If sign in fails, display a message to the user.
 
-                                Toast.makeText(SignUp.this, "Authentication failed.",
+                                Toast.makeText(SignUp.this, "Đăng ký thất bại",
                                         Toast.LENGTH_SHORT).show();
 
                             }

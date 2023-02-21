@@ -30,9 +30,15 @@ import com.example.nt118_nhom2_trips.ui.changepassword.ChangPasswordFragment;
 import com.example.nt118_nhom2_trips.ui.home.HomeFragment;
 import com.example.nt118_nhom2_trips.ui.profile.ProfileFragment;
 import com.example.nt118_nhom2_trips.ui.profile.UpdateProfile;
+import com.example.nt118_nhom2_trips.user.User;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.io.IOException;
 
@@ -47,29 +53,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private static final int Fragment_profile = 1;
     private static final int Fragment_changepass = 2;
     private int numFragment = Fragment_home;
-    public static final int MY_REQUEST_CODE = 10;
-    /*final private UpdateProfile updateProfile = new UpdateProfile();
-    final private ActivityResultLauncher<Intent> activityResultLauncher = registerForActivityResult(
-            new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
-                @Override
-                public void onActivityResult(ActivityResult result) {
-                    if(result.getResultCode() == RESULT_OK){
-                        Intent intent = result.getData();
-                        if (intent == null){
-                            return;
-                        }
-                        Uri uri = intent.getData();
-                        updateProfile.setUri(uri);
-                        try {
-                            Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
-                            updateProfile.setBitmapImageView(bitmap);
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                }
-            });*/
-
+    private DatabaseReference databaseReference;
+    private String Email;
+    //public static final int MY_REQUEST_CODE = 10;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -101,12 +87,30 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     public void showUserInformation(){
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        if(user == null){
+        databaseReference = FirebaseDatabase.getInstance().getReference("User");
+        databaseReference.child(user.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                User user = snapshot.getValue(User.class);
+                if(user != null){
+                    //Fullname = firebaseUser.getDisplayName();
+                    tvname.setText(user.getFullname());
+                    Email = user.getEmail();
+                    tvmail.setText(Email);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+        /*if(user == null){
             return;
         }
         String name = user.getDisplayName();
         String email = user.getEmail();
-        Uri photoUrl = user.getPhotoUrl();
+        //Uri photoUrl = user.getPhotoUrl();
 
         if(name == null){
             tvname.setVisibility(View.GONE);
@@ -114,8 +118,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             tvname.setVisibility(View.VISIBLE);
             tvname.setText(name);
         }
-        tvmail.setText(email);
-        Glide.with(this).load(photoUrl).error(R.drawable.ic_avatar).into(avatar);
+        tvmail.setText(email);*/
+        //Glide.with(this).load(photoUrl).error(R.drawable.ic_avatar).into(avatar);
     }
 
     @Override
@@ -145,39 +149,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;
     }
-
-    /*@Override
-    public void onBackPressed() {
-        if(drawerLayout.isDrawerOpen(GravityCompat.START)){
-            drawerLayout.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
-        }
-    }*/
-
     private void replaceFragment(Fragment fragment){
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.content_frame, fragment);
         fragmentTransaction.commit();
     }
-
-    /*@Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        if(requestCode == MY_REQUEST_CODE){
-            if(grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
-                openGallery();
-            }
-            else {
-                //
-            }
-        }
-    }*/
-
-    /*public void openGallery(){
-        Intent intent = new Intent();
-        intent.setType("image/*");
-        intent.setAction(Intent.ACTION_GET_CONTENT);
-        activityResultLauncher.launch(Intent.createChooser(intent, "Select picture"));
-    }*/
 }

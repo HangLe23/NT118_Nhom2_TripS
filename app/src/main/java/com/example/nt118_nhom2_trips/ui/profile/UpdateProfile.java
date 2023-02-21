@@ -1,15 +1,8 @@
 package com.example.nt118_nhom2_trips.ui.profile;
 
-import static com.example.nt118_nhom2_trips.MainActivity.MY_REQUEST_CODE;
-
-import android.Manifest;
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.graphics.Bitmap;
-import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -17,6 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -47,10 +41,9 @@ public class UpdateProfile extends AppCompatActivity implements AdapterView.OnIt
     private FirebaseAuth mAuth;
     private FirebaseUser firebaseUser;
     private Button btn_Update, time;
-    private CircleImageView avatar;
+    private ImageView avatar;
     private Spinner btn_gender;
     private DatePickerDialog picker;
-    private Uri uri;
     final private MainActivity mainActivity = new MainActivity();
     private ProgressDialog progressDialog;
     @Override
@@ -100,28 +93,12 @@ public class UpdateProfile extends AppCompatActivity implements AdapterView.OnIt
         });
     }
 
-    /*private void onClickRequestPermission() {
-        mainActivity = new MainActivity();
-        if(Build.VERSION.SDK_INT < Build.VERSION_CODES.M){
-            mainActivity.openGallery();
-            return;
-        }
-        if(UpdateProfile.this.checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) ==
-                PackageManager.PERMISSION_GRANTED){
-            mainActivity.openGallery();
-        } else{
-            String [] permissions = {Manifest.permission.READ_EXTERNAL_STORAGE};
-            UpdateProfile.this.requestPermissions(permissions, MY_REQUEST_CODE);
-        }
-    }*/
-
     private void updateProfile(FirebaseUser firebaseUser) {
-
         UpdateEmail(firebaseUser);
-        UserProfileChangeRequest profileChangeRequest = new UserProfileChangeRequest.Builder()
-                .setDisplayName(fullname.getText().toString())/*.setPhotoUri(uri)*/.build();
-        firebaseUser.updateProfile(profileChangeRequest);
-        User user = new User(birthday.getText().toString(), gender.getText().toString(), phone.getText().toString());
+        /*UserProfileChangeRequest profileChangeRequest = new UserProfileChangeRequest.Builder()
+                .setDisplayName(fullname.getText().toString())*//*.setPhotoUri(uri)*//*.build();
+        firebaseUser.updateProfile(profileChangeRequest);*/
+        User user = new User(fullname.getText().toString(), birthday.getText().toString(), gender.getText().toString(), phone.getText().toString());
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("User");
         String UID = firebaseUser.getUid();
         progressDialog.show();
@@ -176,7 +153,7 @@ public class UpdateProfile extends AppCompatActivity implements AdapterView.OnIt
     }
 
     private void findViewByIds(){
-        avatar = (CircleImageView)findViewById(R.id.img_avatar);
+        avatar = (ImageView) findViewById(R.id.img_avatar);
         fullname = (EditText) findViewById(R.id.et_fullname);
         birthday = (EditText) findViewById(R.id.et_birthday);
         gender = (EditText) findViewById(R.id.et_gender);
@@ -198,12 +175,4 @@ public class UpdateProfile extends AppCompatActivity implements AdapterView.OnIt
     public void onNothingSelected(AdapterView<?> adapterView) {
 
     }
-
-    /*public void setBitmapImageView(Bitmap bitmap) {
-        avatar.setImageBitmap(bitmap);
-    }
-
-    public void setUri(Uri uri) {
-        this.uri = uri;
-    }*/
 }

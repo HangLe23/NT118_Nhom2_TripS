@@ -4,15 +4,20 @@ public class User {
 
     private    String email;
     private    String Password;
-    private    String gender, phone, birthday;
+    private    String gender, phone, birthday, fullname;
 
     public User() {
     }
 
-    public User(String birthday, String gender, String phone) {
+    public User(String fullname, String birthday, String gender, String phone) {
+        this.fullname = fullname;
         this.birthday = birthday;
         this.gender = gender;
         this.phone = phone;
+    }
+
+    public String getFullname() {
+        return fullname;
     }
 
     public String getBirthday() {

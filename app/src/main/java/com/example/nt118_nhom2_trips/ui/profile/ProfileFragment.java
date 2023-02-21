@@ -61,8 +61,8 @@ public class ProfileFragment extends Fragment {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 User user = snapshot.getValue(User.class);
                 if(user != null){
-                    Fullname = firebaseUser.getDisplayName();
-                    fullname.setText(Fullname);
+                    //Fullname = firebaseUser.getDisplayName();
+                    fullname.setText(user.getFullname());
                     Email = firebaseUser.getEmail();
                     email.setText(Email);
                     birthday.setText(user.getBirthday());

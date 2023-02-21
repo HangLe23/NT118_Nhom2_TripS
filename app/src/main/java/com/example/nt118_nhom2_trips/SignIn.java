@@ -117,7 +117,7 @@ public class SignIn extends AppCompatActivity {
                             } else {
                                 // If sign in fails, display a message to the user.
 
-                                Toast.makeText(SignIn.this, "Authentication failed.",
+                                Toast.makeText(SignIn.this, "Đăng nhập thất bại",
                                         Toast.LENGTH_SHORT).show();
                             }
                         }

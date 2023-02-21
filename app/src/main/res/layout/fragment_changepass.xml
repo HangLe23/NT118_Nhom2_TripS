@@ -32,12 +32,22 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/border"
         android:hint="Nhập mật khẩu cũ"
+        android:password="true"
         android:textSize="20sp"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
         android:layout_marginTop="75dp"
         android:layout_marginRight="50dp"
         android:layout_marginLeft="50dp"/>
+    <ImageButton
+        android:id="@+id/btn_show_oldpass"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:background="#335058"
+        app:layout_constraintTop_toBottomOf="@id/border"
+        android:layout_marginTop="75dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginRight="50dp"/>
 
     <EditText
         android:id="@+id/et_newpassword"
@@ -45,12 +55,22 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/et_oldpassword"
         android:hint="Nhập mật khẩu mới"
+        android:password="true"
         android:textSize="20sp"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
         android:layout_marginTop="50dp"
         android:layout_marginRight="50dp"
         android:layout_marginLeft="50dp" />
+    <ImageButton
+        android:id="@+id/btn_show_newpass"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:background="#335058"
+        app:layout_constraintTop_toBottomOf="@id/et_oldpassword"
+        android:layout_marginTop="45dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginRight="50dp"/>
 
     <EditText
         android:id="@+id/et_confirmpass"
@@ -58,12 +78,22 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/et_newpassword"
         android:hint="Xác nhận mật khẩu"
+        android:password="true"
         android:textSize="20sp"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
         android:layout_marginTop="50dp"
         android:layout_marginRight="50dp"
         android:layout_marginLeft="50dp" />
+    <ImageButton
+        android:id="@+id/btn_show_confirm"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:background="#335058"
+        app:layout_constraintTop_toBottomOf="@id/et_newpassword"
+        android:layout_marginTop="45dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginRight="50dp"/>
 
 
     <Button
