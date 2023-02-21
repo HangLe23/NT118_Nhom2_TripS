@@ -111,10 +111,10 @@ public class UpdateProfile extends AppCompatActivity implements AdapterView.OnIt
                     Intent intent = new Intent(UpdateProfile.this, MainActivity.class);
                     startActivity(intent);
                     finish();
-                    mainActivity.showUserInformation();
                 }
             }
         });
+        mainActivity.showUserInformation();
     }
 
     private void UpdateEmail(FirebaseUser user) {
@@ -137,7 +137,7 @@ public class UpdateProfile extends AppCompatActivity implements AdapterView.OnIt
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 User user = snapshot.getValue(User.class);
                 if(user != null){
-                    fullname.setText(firebaseUser.getDisplayName());
+                    fullname.setText(user.getFullname());
                     birthday.setText(user.getBirthday());
                     gender.setText(user.getGender());
                     phone.setText(user.getPhone());

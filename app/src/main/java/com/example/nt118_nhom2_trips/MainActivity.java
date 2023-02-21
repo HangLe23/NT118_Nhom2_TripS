@@ -86,16 +86,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     public void showUserInformation(){
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         databaseReference = FirebaseDatabase.getInstance().getReference("User");
-        databaseReference.child(user.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
+        databaseReference.child(firebaseUser.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 User user = snapshot.getValue(User.class);
                 if(user != null){
                     //Fullname = firebaseUser.getDisplayName();
                     tvname.setText(user.getFullname());
-                    Email = user.getEmail();
+                    Email = firebaseUser.getEmail();
                     tvmail.setText(Email);
                 }
             }
