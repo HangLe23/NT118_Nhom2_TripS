@@ -5,9 +5,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.nt118_nhom2_trips.R;
 import com.example.nt118_nhom2_trips.user.User;
@@ -20,6 +22,16 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
+import org.json.JSONObject;
+
+import vn.zalopay.sdk.Environment;
+import vn.zalopay.sdk.ZaloPayError;
+import vn.zalopay.sdk.ZaloPaySDK;
+import vn.zalopay.sdk.listeners.PayOrderListener;
+
+import com.example.nt118_nhom2_trips.Helpers.CreateOrder;
+import com.example.nt118_nhom2_trips.Helpers.AppInfo;
+
 public class Activity_Confirm extends AppCompatActivity {
     private TextView tv_email, tv_phone, tv_name, tv_address, tv_start, tv_end, tv_guest, tv_price, tv_name1, tv_guest1, tv_size, tv_breakfast, tv_wifi, tv_bathroom, tv_price2, tv_birthday;
     private DatabaseReference mDatabaseRooms, mDatabaseUser;
@@ -31,6 +43,7 @@ public class Activity_Confirm extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_confirm);
+        ZaloPaySDK.init(AppInfo.APP_ID, Environment.SANDBOX);
 
         tv_email = findViewById(R.id.tv_email);
         tv_phone = findViewById(R.id.tv_phone);
@@ -49,6 +62,10 @@ public class Activity_Confirm extends AppCompatActivity {
         tv_bathroom = findViewById(R.id.tv_bath);
         tv_price2 = findViewById(R.id.tv_price2);
         btn_book = findViewById(R.id.btn_book);
+
+        StrictMode.ThreadPolicy policy = new
+                StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
 
         mDatabaseRooms = FirebaseDatabase.getInstance().getReference().child("Rooms");
         mDatabaseUser = FirebaseDatabase.getInstance().getReference().child("User");
@@ -126,9 +143,44 @@ public class Activity_Confirm extends AppCompatActivity {
         });
         btn_book.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View v) {
 
+                CreateOrder orderApi = new CreateOrder();
+                try {
+                    JSONObject data = orderApi.createOrder(tv_price2.getText().toString());
+                    String code = data.getString("returncode");
+
+                    if (code.equals("1")) {
+
+                        String token = data.getString("zptranstoken");
+
+                        ZaloPaySDK.getInstance().payOrder(Activity_Confirm.this, token, "demozpdk://app", new PayOrderListener() {
+                            @Override
+                            public void onPaymentSucceeded(final String transactionId, final String transToken, final String appTransID) {
+                                Toast.makeText(Activity_Confirm.this, "Thanh toán thành công", Toast.LENGTH_SHORT).show();
+                            }
+
+                            @Override
+                            public void onPaymentCanceled(String zpTransToken, String appTransID) {
+                                Toast.makeText(Activity_Confirm.this, "Thanh toán bị hủy", Toast.LENGTH_SHORT).show();
+                            }
+
+                            @Override
+                            public void onPaymentError(ZaloPayError zaloPayError, String zpTransToken, String appTransID) {
+                                Toast.makeText(Activity_Confirm.this, "Thanh toán thất bại", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                    }
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
         });
+    }
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        ZaloPaySDK.getInstance().onResult(intent);
     }
 }
