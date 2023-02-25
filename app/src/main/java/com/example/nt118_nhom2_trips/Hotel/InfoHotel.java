@@ -1,12 +1,5 @@
 package com.example.nt118_nhom2_trips.Hotel;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.DialogFragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -18,7 +11,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.nt118_nhom2_trips.CreateNewTrip.Activity;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.DialogFragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.nt118_nhom2_trips.CreateNewTrip.DatePickerFragment;
 import com.example.nt118_nhom2_trips.R;
 import com.google.firebase.database.DataSnapshot;
@@ -32,10 +30,7 @@ import com.squareup.picasso.Picasso;
 import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Collection;
-import java.util.Iterator;
 import java.util.List;
-import java.util.ListIterator;
 
 public class InfoHotel extends AppCompatActivity implements DatePickerDialog.OnDateSetListener, OnRoomItemClickListener{
     private DatabaseReference mDatabaseHotels, mDatabaseRooms;

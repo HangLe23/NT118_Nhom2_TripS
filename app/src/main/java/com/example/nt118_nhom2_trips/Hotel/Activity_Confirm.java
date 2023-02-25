@@ -1,8 +1,5 @@
 package com.example.nt118_nhom2_trips.Hotel;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
@@ -11,6 +8,11 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.nt118_nhom2_trips.Helpers.AppInfo;
+import com.example.nt118_nhom2_trips.Helpers.CreateOrder;
 import com.example.nt118_nhom2_trips.R;
 import com.example.nt118_nhom2_trips.user.User;
 import com.google.firebase.auth.FirebaseAuth;
@@ -20,7 +22,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
-import com.squareup.picasso.Picasso;
 
 import org.json.JSONObject;
 
@@ -28,9 +29,6 @@ import vn.zalopay.sdk.Environment;
 import vn.zalopay.sdk.ZaloPayError;
 import vn.zalopay.sdk.ZaloPaySDK;
 import vn.zalopay.sdk.listeners.PayOrderListener;
-
-import com.example.nt118_nhom2_trips.Helpers.CreateOrder;
-import com.example.nt118_nhom2_trips.Helpers.AppInfo;
 
 public class Activity_Confirm extends AppCompatActivity {
     private TextView tv_email, tv_phone, tv_name, tv_address, tv_start, tv_end, tv_guest, tv_price, tv_name1, tv_guest1, tv_size, tv_breakfast, tv_wifi, tv_bathroom, tv_price2, tv_birthday;
@@ -87,7 +85,8 @@ public class Activity_Confirm extends AppCompatActivity {
         tv_end.setText(EndDay);
 
         String fullname = mAuth.getCurrentUser().getDisplayName();
-        tv_name.setText("Họ tên: " + fullname);
+
+        //tv_name.setText("Họ tên: " + fullname);
         String email = mAuth.getCurrentUser().getEmail();
         tv_email.setText("Email: "+ email);
         mDatabaseUser.child(User_id).addValueEventListener(new ValueEventListener() {
@@ -95,6 +94,7 @@ public class Activity_Confirm extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 User user = snapshot.getValue(User.class);
                 if(user!=null) {
+                    tv_name.setText("Họ tên: " + user.getFullname());
                     tv_phone.setText("Điện thoại: " + user.getPhone());
                     tv_birthday.setText("Ngày sinh: " + user.getBirthday());
                 }

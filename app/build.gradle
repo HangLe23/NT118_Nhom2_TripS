@@ -2,8 +2,6 @@ plugins {
     id 'com.android.application'
     id 'com.google.gms.google-services'
 }
-
-
 android {
     compileSdk 32
 
@@ -47,6 +45,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-database:20.1.0'
     implementation 'com.google.firebase:firebase-firestore:24.4.1'
     implementation fileTree(dir: 'D:\\PTUDTBDD', include: ['*.aar', '*.jar'], exclude: [])
+    implementation files('D:\\zpdk-release-v3.1.aar')
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'

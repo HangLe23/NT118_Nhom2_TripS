@@ -1,9 +1,14 @@
 package com.example.nt118_nhom2_trips.Tour;
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.nt118_nhom2_trips.Hotel.Room;
 import com.example.nt118_nhom2_trips.R;
 import com.example.nt118_nhom2_trips.user.User;
 import com.google.firebase.auth.FirebaseAuth;
@@ -13,15 +18,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
-
-import android.content.Intent;
-import android.net.Uri;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
-
-import javax.security.auth.Subject;
 
 public class Activity_Tour_Confirm extends AppCompatActivity {
     private TextView tv_email, tv_phone, tv_name, tv_birthday, tv_name_tour, tv_price;
@@ -55,7 +51,7 @@ public class Activity_Tour_Confirm extends AppCompatActivity {
         }
 
         String fullname = mAuth.getCurrentUser().getDisplayName();
-        tv_name.setText("Họ tên: " + fullname);
+        //tv_name.setText("Họ tên: " + fullname);
         String email = mAuth.getCurrentUser().getEmail();
         tv_email.setText("Email: "+ email);
         mDatabaseUser.child(User_id).addValueEventListener(new ValueEventListener() {
@@ -63,6 +59,7 @@ public class Activity_Tour_Confirm extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 User user = snapshot.getValue(User.class);
                 if(user!=null) {
+                    tv_name.setText("Họ tên: " +user.getFullname());
                     tv_phone.setText("Điện thoại: " + user.getPhone());
                     tv_birthday.setText("Ngày sinh: " + user.getBirthday());
                 }
