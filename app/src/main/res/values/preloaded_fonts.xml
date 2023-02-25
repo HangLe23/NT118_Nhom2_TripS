@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <array name="preloaded_fonts" translatable="false">
+        <item>@font/</item>
+        <item>@font/hind</item>
         <item>@font/inter_medium</item>
         <item>@font/istok_web</item>
         <item>@font/karla_bold</item>
+        <item>@font/lobster</item>
+        <item>@font/open_sans</item>
+        <item>@font/raleway_bold</item>
+        <item>@font/raleway_thin</item>
+        <item>@font/source_sans_pro_extralight</item>
         <item>@font/ubuntu</item>
         <item>@font/ubuntu_bold</item>
     </array>

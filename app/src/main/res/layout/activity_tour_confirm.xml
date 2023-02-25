@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Hotel.InfoRoom"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#335058">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <!--banner-->
+            <!--xac nhan-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="75dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <Button
+                        android:id="@+id/btn_back3"
+                        android:layout_width="180px"
+                        android:layout_height="130px"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="15dp"
+                        android:background="@drawable/ic_yellow_arrow_back"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tv_rate"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="80px"
+                        android:layout_marginTop="18dp"
+                        android:fontFamily="@font/inter_bold"
+                        android:text="Thông tin cá nhân"
+                        android:textColor="@color/white"
+                        android:textSize="60px" />
+                </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="150px"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/tv_name_tour"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="120px"
+                    android:layout_marginVertical="30px"
+                    android:fontFamily="@font/lobster"
+                    android:text="Da lat tour  \n3 days 2 night"
+                    android:textColor="#DEC854"
+                    android:textSize="35dp"
+                    android:layout_marginBottom="100px"
+                    android:textStyle="" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="120px"
+                    android:layout_marginVertical="30px"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv_fullname"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20px"
+                        android:layout_marginTop="5px"
+                        android:fontFamily="@font/ubuntu"
+                        android:text="Họ tên "
+                        android:textColor="#DEC854"
+                        android:textSize="20dp"
+                        android:textStyle="bold" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginRight="20px"
+                        android:background="@android:color/white" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="120px"
+                    android:layout_marginVertical="30px"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv_email"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20px"
+                        android:layout_marginTop="5px"
+                        android:fontFamily="@font/ubuntu"
+                        android:text="Email "
+                        android:textColor="@color/white"
+                        android:textSize="20dp"
+                        android:textStyle="" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginRight="20px"
+                        android:background="@android:color/white" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="120px"
+                    android:layout_marginVertical="30px"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv_phone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20px"
+                        android:layout_marginTop="5px"
+                        android:fontFamily="@font/ubuntu"
+                        android:text="Điện thoại "
+                        android:textColor="@color/white"
+                        android:textSize="20dp"
+                        android:textStyle="" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginRight="20px"
+                        android:background="@android:color/white" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="120px"
+                    android:layout_marginTop="30px"
+                    android:layout_marginBottom="100px"
+
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv_birthday"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20px"
+                        android:layout_marginTop="5px"
+                        android:fontFamily="@font/ubuntu"
+                        android:text="Ngày sinh "
+                        android:textColor="@color/white"
+                        android:textSize="20dp"
+                        android:textStyle="" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginRight="20px"
+                        android:background="@android:color/white" />
+                </LinearLayout>
+            </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="280px"
+        android:layout_alignParentBottom="true"
+        android:background="#DEC854">
+        <Button
+            android:text="Đặt ngay"
+            android:id="@+id/btn_book"
+            android:layout_width="350px"
+            android:layout_height="200px"
+            android:background="@drawable/radius_button"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:fontFamily="@font/ubuntu"
+            android:textStyle="bold"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="40px"
+            android:layout_marginRight="40px">
+        </Button>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@id/btn_book"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginHorizontal="80px"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/tv_price2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/ubuntu"
+                android:text="270000đ"
+                android:textColor="#D81414"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:layout_marginLeft="20px"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="40px"
+                    android:layout_height="40px"
+                    android:layout_marginLeft="10px"
+                    android:layout_marginTop="8px"
+                    android:background="@drawable/ic_baseline_attach_money_24"
+                    android:textAlignment="viewEnd"></TextView>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/ubuntu"
+                    android:textSize="12sp"
+                    android:textStyle=""
+                    android:text="Đã bao gồm thuế và phí"
+                    android:textColor="@color/black"/>
+            </LinearLayout>
+        </LinearLayout>
+
+    </RelativeLayout>
+</RelativeLayout>
