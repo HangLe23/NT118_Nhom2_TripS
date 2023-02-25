@@ -14,6 +14,7 @@ import com.example.nt118_nhom2_trips.Hotel.OnHotelItemClickListener;
 import com.example.nt118_nhom2_trips.R;
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class TourAdapter extends RecyclerView.Adapter<TourAdapter.HotelViewHolder>{
@@ -46,6 +47,11 @@ public class TourAdapter extends RecyclerView.Adapter<TourAdapter.HotelViewHolde
         if(tours != null)
             return tours.size();
         return 0;
+    }
+
+    public  void searchHotel(ArrayList<Tour> searchTour) {
+        tours = searchTour;
+        notifyDataSetChanged();
     }
 
     public  class  HotelViewHolder extends RecyclerView.ViewHolder{

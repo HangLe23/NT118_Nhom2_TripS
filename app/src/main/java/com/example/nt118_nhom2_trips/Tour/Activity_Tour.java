@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.appcompat.widget.SearchView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,6 +19,7 @@ import com.example.nt118_nhom2_trips.Hotel.Hotel;
 import com.example.nt118_nhom2_trips.Hotel.HotelAdapter;
 import com.example.nt118_nhom2_trips.Hotel.InfoHotel;
 import com.example.nt118_nhom2_trips.Hotel.OnHotelItemClickListener;
+import com.example.nt118_nhom2_trips.Hotel.SearchHotel;
 import com.example.nt118_nhom2_trips.MainActivity;
 import com.example.nt118_nhom2_trips.PlaceName.PlaceName;
 import com.example.nt118_nhom2_trips.PlaceName.PlaceNameAdapater;
@@ -39,6 +41,7 @@ public class Activity_Tour extends AppCompatActivity implements OnTourItemClickL
     private List<Tour> mListTours;
     private Intent intent;
     private Button backhome;
+    SearchView searchtour;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,6 +49,7 @@ public class Activity_Tour extends AppCompatActivity implements OnTourItemClickL
         rcvCategory = findViewById(R.id.rcv_category);
         rcvCategoryTour = findViewById(R.id.rcv_catorytour);
         backhome = (Button) findViewById(R.id.btn_backhome);
+        searchtour = findViewById(R.id.search_tour);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, RecyclerView.VERTICAL, false);
         mListTours = new ArrayList<Tour>();
         mAuth = FirebaseAuth.getInstance();
@@ -76,6 +80,13 @@ public class Activity_Tour extends AppCompatActivity implements OnTourItemClickL
             @Override
             public void onClick(View view) {
                 Intent iNewActivity = new Intent(Activity_Tour.this, MainActivity.class);
+                startActivity(iNewActivity);
+            }
+        });
+        searchtour.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent iNewActivity = new Intent(Activity_Tour.this, SearchTour.class);
                 startActivity(iNewActivity);
             }
         });

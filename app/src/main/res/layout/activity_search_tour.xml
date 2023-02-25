@@ -36,7 +36,7 @@
         <androidx.appcompat.widget.SearchView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/search_hotel"
+            android:id="@+id/search_tour"
             android:background="@drawable/white_border"
             android:layout_marginTop="20dp"
             android:layout_marginRight="30dp"
@@ -48,6 +48,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="200dp"
-        android:id="@+id/rcv_catoryhotel"/>
+        android:id="@+id/rcv_catorytour"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
