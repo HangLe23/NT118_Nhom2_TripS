@@ -15,17 +15,20 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
+import javax.security.auth.Subject;
 
 public class Activity_Tour_Confirm extends AppCompatActivity {
     private TextView tv_email, tv_phone, tv_name, tv_birthday, tv_name_tour, tv_price;
     private DatabaseReference mDatabaseTours, mDatabaseUser;
     private Button btn_book;
     private FirebaseAuth mAuth;
-    String TourId, User_id;
+    String TourId, User_id, name_tour, mail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,13 +74,15 @@ public class Activity_Tour_Confirm extends AppCompatActivity {
             }
         });
 
-        Query queryTour = mDatabaseTours.orderByChild("id_tour").equalTo("1");
+        Query queryTour = mDatabaseTours.orderByChild("id_tour").equalTo(TourId);
         queryTour.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot ds:snapshot.getChildren()) {
                     Tour tour = ds.getValue(Tour.class);
                     if(tour != null) {
+                        mail = tour.getEmail();
+                        name_tour = tour.getName() + " - " + tour.getDay();
                         tv_name_tour.setText(tour.getName() + "\n" + tour.getDay());
                         tv_price.setText(tour.getPrice());
                         break;
@@ -87,6 +92,20 @@ public class Activity_Tour_Confirm extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
+        btn_book.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String subject = "Đặt vé cho " + name_tour;
+                String mes = "Xin cho tôi thông tin chi tiết về tour này! Xin cảm ơn!";
+                Intent intent1 = new Intent(Intent.ACTION_SEND);
+                intent1.putExtra(Intent.EXTRA_EMAIL, new String[]{mail});
+                intent1.putExtra(Intent.EXTRA_SUBJECT, subject);
+                intent1.putExtra(Intent.EXTRA_TEXT, mes);
+                intent1.setType("message/rfc822");
+                startActivity(intent1);
+                startActivity(Intent.createChooser(intent1, "Choose an email client"));
             }
         });
     }
