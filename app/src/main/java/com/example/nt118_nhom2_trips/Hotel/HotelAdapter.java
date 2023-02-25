@@ -13,6 +13,7 @@ import com.example.nt118_nhom2_trips.CreateNewTrip.OnItemClickListener;
 import com.example.nt118_nhom2_trips.R;
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class HotelAdapter extends RecyclerView.Adapter<HotelAdapter.HotelViewHolder>{
@@ -47,6 +48,11 @@ public class HotelAdapter extends RecyclerView.Adapter<HotelAdapter.HotelViewHol
         if(hotels != null)
             return hotels.size();
         return 0;
+    }
+
+    public  void searchHotel(ArrayList<Hotel> searchHotel) {
+        hotels = searchHotel;
+        notifyDataSetChanged();
     }
 
     public  class  HotelViewHolder extends RecyclerView.ViewHolder{

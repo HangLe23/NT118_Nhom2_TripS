@@ -25,13 +25,6 @@
                 android:layout_marginLeft="5dp"
                 android:background="@drawable/ic_baseline_home_24"/>
 
-            <Button
-                android:id="@+id/btn_history"
-                android:layout_width="50dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="295dp"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/ic_baseline_history_24"/>
         </LinearLayout>
         <androidx.appcompat.widget.SearchView
             android:layout_width="match_parent"
@@ -47,7 +40,9 @@
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="200dp"
+        android:layout_marginTop="195dp"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginBottom="20dp"
         android:id="@+id/rcv_catoryhotel"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
